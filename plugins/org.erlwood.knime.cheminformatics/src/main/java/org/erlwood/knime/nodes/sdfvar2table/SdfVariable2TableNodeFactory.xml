@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="MarvinSketch.png" 
+		type="Manipulator">
+
+    <name>SDF Variable to Table</name>
+    
+    <shortDescription>SdfVariable2Table</shortDescription>
+    
+    <fullDescription>
+        <intro>
+			Converts a named flow variable containg a st of moelecules in SDF format.
+        </intro>
+    </fullDescription>
+    
+    <ports>
+        <outPort index="0" name="Structures Output">
+        	All drawn structures are output here.
+        </outPort>  
+		<outPort index="1" name="Reactions Output">
+        	All drawn reactions are output here.
+        </outPort>     
+    </ports>
+    
+     
+</knimeNode>

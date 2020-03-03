@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		type="Source" 
+		icon="./default.png">
+	<name>XLS Enumerate Named Ranges</name>
+
+	<shortDescription>
+        Enumerates sheet names and named ranges (cell reference ranges) contained in a workbook.
+	</shortDescription>
+
+	<fullDescription>
+		<intro>
+			This node reads a workbook and provides the contained sheet and named range names at its output port.<br />
+			The performance of the reader node is limited (due to the underlying library
+			of the Apache POI project). Reading large files takes a very long time and uses a
+			lot of memory (especially files in xlsx format).   		
+		</intro>
+		<option name="File to read">
+			Enter a valid file name. You can also choose a previously
+			selected file from the drop-down list, or select a file from
+			the &quot;Browse...&quot; dialog. Supported are xls and xlsx file 
+			formats. (Note: reading large xlsx files is very slow and memory consuming.)
+		</option>
+	</fullDescription>
+
+	<ports>
+		<outPort index="0" name="Output table">
+			The sheet and named range names contained in the workbook.
+		</outPort>
+	</ports>
+</knimeNode>
+
+

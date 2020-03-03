@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+   
+	<extension-point id="moleculeconverters" name="Molecule Converter Supplier Contribution" schema="schema/MoleculeConverters.exsd"/>
+ 	<extension-point id="preferredconverters" name="Preferred Molecule Converters" schema="schema/PreferredConverters.exsd"/>
+    <extension-point id="sketchertoppanel" name="Sketcher Top Panel" schema="schema/sketchertoppanel.exsd"/>
+
+	   
+	 <extension point="org.eclipse.ui.preferencePages">
+	    <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.OpenPhactsPreferencesUI" id="org.erlwood.knime.OpenPhactsPreferencesUI" name="OpenPhacts Preferences"/>	     	
+	 </extension>
+	   
+      
+  <extension point="org.knime.workbench.repository.categories">
+		<category after="" description="Available nodes built by Erlwood" icon="icons/Farm-Fresh_green16_16.png" level-id="ErlwoodNodes" name="Erlwood Nodes" path="/community"/>	
+		<category after="org.erlwood.knime.core.io" icon="icons/web_service-4.png" level-id="org.erlwood.knime.core.dm" name="Data Manipulation" path="/community/ErlwoodNodes/"/>
+	 	<category after="org.erlwood.knime.core.io" icon="icons/convert.png" level-id="org.erlwood.knime.core.sdfc" name="Structure Data Format Converters" path="/community/ErlwoodNodes/"/>
+	 	<category after="org.erlwood.knime.core.sdfc" icon="icons/ssim.png" level-id="org.erlwood.knime.core.ss" name="Structure Similarity" path="/community/ErlwoodNodes/"/>
+	 	<category after="org.erlwood.knime.core.ss" icon="icons/calculator.png" level-id="org.erlwood.knime.core.sp" name="Structure Properties" path="/community/ErlwoodNodes/"/>
+	 	<category after="org.erlwood.knime.core.ss" icon="icons/virtual_screening.png" level-id="org.erlwood.knime.core.vs" name="Virtual Screening" path="/community/ErlwoodNodes/"/>
+	  	<category after="org.erlwood.knime.core.vs" icon="icons/vsmetrics.png" level-id="org.erlwood.knime.core.er" name="Evaluation and Ranking" path="/community/ErlwoodNodes/"/>
+	  	<category after="org.erlwood.knime.core.er" icon="icons/rgroups.png" level-id="org.erlwood.knime.core.sar" name="SAR Analysis" path="/community/ErlwoodNodes/"/>
+	 	<category after="org.erlwood.knime.core.view" icon="icons/testing.png" level-id="org.erlwood.knime.core.test" name="Testing" path="/community/ErlwoodNodes/"/>	 
+	 	<category after="org.erlwood.knime.core.test" icon="icons/openphacts.png" level-id="org.erlwood.knime.core.openphacts" name="Open PHACTS" path="/community/ErlwoodNodes/"/>
+   	</extension>
+   
+	<extension point="org.knime.workbench.repository.nodes">
+			  		
+		<!-- I/O -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.moleculeeditor.MoleculeEditorNodeFactory"/>
+	 	<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.molfilereader.MolFileReaderNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.molfilewriter.MolFileWriterNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.rxnfilereader.RxnFileReaderNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.marvinsketch.MarvinSketchNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.tabletostring.TableToStringNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.stringtotable.StringToTableNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.sdfvar2table.SdfVariable2TableNodeFactory"/>
+        	
+        	
+		<!-- Structure Properties -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sp" factory-class="org.erlwood.knime.nodes.pbfcalc.PBFcalcNodeFactory"/> 
+		 
+        <!-- Structure Data Format Converters -->
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sdfc" factory-class="org.erlwood.knime.nodes.stringtomolecule.StringToMoleculeNodeFactory"/>
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sdfc" factory-class="org.erlwood.knime.nodes.stringtorxn.StringToRxnNodeFactory"/>
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sdfc" factory-class="org.erlwood.knime.nodes.bitvectortobits.BitVectorToBitsNodeFactory"/>
+		
+		<!-- Structure Similarity -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.ss" factory-class="org.erlwood.knime.nodes.fingerprintsimilarity.FingerprintSimilarityNodeFactory"/>
+		
+		<!-- Virtual Screening -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.vs" factory-class="org.erlwood.knime.nodes.vsmetrics.VSMetricsNodeFactory"/>
+			
+		<!-- Evaluation and Ranking -->
+  		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.er" factory-class="org.erlwood.knime.nodes.desirability.DesirabilityNodeFactory"/>
+  		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.er" factory-class="org.erlwood.knime.nodes.paretoranking.ParetoRankingNodeFactory"/>
+		
+		<!-- SAR Analysis -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sar" factory-class="org.erlwood.knime.nodes.rowpairer.RowPairerNodeFactory"/> 
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.sar" factory-class="org.erlwood.knime.nodes.mmp.RDKitMMPNodeFactory"/>
+		
+		<!-- Viewers -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.view" factory-class="org.erlwood.knime.nodes.similarityviewer.SimilarityViewerNodeFactory"/>	
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.view" factory-class="org.erlwood.knime.nodes.graphrenderer.GraphRendererNodeFactory"/>		
+		  		
+		<!-- Testing -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.test" factory-class="org.erlwood.knime.nodes.moleculedifferencechecker.MoleculeDifferenceCheckerNodeFactory"/>
+	
+		<!-- Open PHACTS -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.openphacts" factory-class="org.erlwood.knime.nodes.openphacts.OpenPhactsNodeFactory"/>
+	
+		<!-- DataManipulation -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.dm" factory-class="org.erlwood.knime.nodes.annotatemolecules.AnnotateMoleculesNodeFactory"/>
+		
+	</extension>
+	
+	
+	 
+  
+  
+  <extension point="org.erlwood.knime.cheminformatics.moleculeconverters">
+     <converter class="org.erlwood.knime.datatypes.converters.MarvinConverter"/>
+     <converter class="org.erlwood.knime.datatypes.converters.RDKitConverter"/>
+  </extension>
+    
+  <extension point="org.erlwood.knime.cheminformatics.preferredconverters">
+     <preferredConverter converter="org.erlwood.knime.datatypes.converters.MarvinConverter" input="org.knime.chem.types.SdfValue" output="org.knime.chem.types.SmilesValue"/>
+  </extension>
+  <extension
+        point="org.erlwood.knime.webservice.core.ErlwoodWebServiceURLSupplier">
+     <supplier
+           class="org.erlwood.knime.WebServiceCoreActivator$WebServiceURLSupplier">
+     </supplier>
+  </extension>
+
+</plugin>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.erlwood.features.core.base_4.0.1.qualifier.jar" id="org.erlwood.features.core.base" version="4.0.1.qualifier">
+      <category name="erlwood"/>
+   </feature>
+   <feature url="features/org.erlwood.features.cheminformatics.base_4.0.1.qualifier.jar" id="org.erlwood.features.cheminformatics.base" version="4.0.1.qualifier">
+      <category name="erlwood"/>
+   </feature>
+   <category-def name="erlwood" label="Erlwood Open Source"/>
+</site>

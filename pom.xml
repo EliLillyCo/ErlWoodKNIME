@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.erlwood.knime</groupId>
+	<artifactId>erlwood-knime</artifactId>
+	<version>4.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<maven.deploy.version>3.0.0-M1</maven.deploy.version>
+		<maven.dependency.version>3.1.1</maven.dependency.version>
+		<tycho.version>1.4.0</tycho.version>
+		
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<lib.directory>${project.basedir}/target/lib</lib.directory>
+	</properties>
+
+	<modules>
+		<!-- build modules -->
+		<module>target-platform</module>
+
+		<!-- plugin modules -->
+		<module>plugins/org.erlwood.knime.core</module>
+		<module>plugins/org.erlwood.knime.webservice.core</module>
+		<module>plugins/org.erlwood.knime.cheminformatics</module>
+
+		<!-- feature modules -->
+		<module>features/org.erlwood.features.core.base</module>
+		<module>features/org.erlwood.features.cheminformatics.base</module>
+
+		<!-- test plugin modules -->
+		<module>tests/org.erlwood.knime.core.test</module>
+		<module>tests/org.erlwood.knime.webservice.core.test</module>
+	</modules>
+	
+	<profiles>
+		<!-- Use a profile so we can avoid building/deploying the update site when we're
+			referencing open source as a dependency -->
+		<profile>
+			<id>opensource</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<modules>
+				<!-- update site modules -->
+				<module>update-site</module>
+			</modules>
+		</profile>
+	</profiles>
+	
+	<distributionManagement>
+		<repository>
+			<id>knime</id>
+			<name>${distribution.name}</name>
+			<url>${distribution.url}</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>knime-snapshots</id>
+			<name>${distribution.snapshot.name}</name>
+			<url>${distribution.snapshot.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.0.1-SNAPSHOT" -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
+				<version>${tycho.version}</version>
+			</plugin>
+			
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-dependency-plugin</artifactId>
+	            <version>${maven.dependency.version}</version>
+	            <executions>
+	                <execution>
+	                    <id>copy-dependencies</id>
+	                    <phase>initialize</phase>
+	                    <goals>
+	                        <goal>copy-dependencies</goal>
+	                    </goals>
+	                    <configuration>
+	                    	<outputDirectory>${lib.directory}</outputDirectory>
+	                        <includeScope>runtime</includeScope>
+	                        <stripVersion>true</stripVersion>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<pomDependencies>consider</pomDependencies>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+
+					<target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>erlwood-target-platform</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+
+						<environment>
+							<os>macos</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<useUIHarness>false</useUIHarness>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<archiveSite>true</archiveSite>
+					<strictVersions>false</strictVersions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven.deploy.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

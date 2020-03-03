@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="Desirability.png" 
+		type="Manipulator">
+    <name>Desirability Ranking</name>
+    
+    <shortDescription>
+        Modification of the Pareto Node to perform as a Desirability Node, following standard Desirability criterion.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>This node can be used to select the most desirable outcome for a number of properties.  Select the properties that
+        you want to use to compute the desirability score, and select maximise or minimise for the property.  Select a weight, the
+        default is 1.0, a property with a weight of 0.5 will have half the contribution to the resulting desirability and a
+        property with a weight of 2.0 will have twice the contribution.  Using properties in the format pKi (M) is the best
+        way to use this node, then set the desired properties to Maximise and the undesired properties to Minimise.  If
+        some properties work in reverse, then apply Maximise or Minimise as appropriate. 
+        </intro>
+        
+        
+        <option name="Options">Selection of columns having the properties.</option>
+        
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Property Input">
+        	Table with input properties.
+        </inPort>
+        
+        <outPort index="0" name="Ranked Output">
+        	Table with ranked output.
+        </outPort>
+    </ports>    
+
+</knimeNode>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./tabletostring.png" 
+		type="Manipulator">
+    <name>Table to String</name>
+    
+    <shortDescription>
+    	Converts the given input table to a base 64 encoded string.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        <p>
+        	Converts the given input table to a base 64 encoded string.
+        	Used to allow the transfer of a KNIME table across web services, allowing reconstruction
+        	using the <b>String to Table</b> node.
+        	</p>
+        </intro>       
+    </fullDescription>
+    
+    <ports>
+    	<inPort index="0" name="Table Input">
+    		The table to convert to a string.
+    	</inPort>
+    	
+    	<outPort index="0" name="String Output">
+    		The base 64 encoded string representation of the table.
+    	</outPort>
+    </ports>
+</knimeNode>

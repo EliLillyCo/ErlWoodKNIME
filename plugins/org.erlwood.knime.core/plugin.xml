@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?>
+<plugin>
+    <extension-point id="KnimeRestHeaderSupplier" name="Erlwood REST Header Supplier for KNIME" schema="schema/KnimeRestHeaderSupplier.exsd"/>
+   
+	<extension point="org.eclipse.ui.views">
+      <category id="ErlwoodKnime" name="Erlwood Knime Client Extensions"/>
+
+      <view allowMultiple="false" category="ErlwoodKnime" class="org.erlwood.knime.views.HelpInfo" icon="icons/ew.png" id="org.erlwood.knime.views.HelpInfo" name="Web Viewer" restorable="true">
+      </view>
+   </extension>
+   
+      
+  <extension point="org.knime.workbench.repository.categories">
+		<category after="" description="Available nodes built by Erlwood" icon="icons/Farm-Fresh_green16_16.png" level-id="ErlwoodNodes" name="Erlwood Nodes" path="/community"/>
+	  	<category after="" icon="icons/io.png" level-id="org.erlwood.knime.core.io" name="IO" path="/community/ErlwoodNodes/"/>
+		<category after="org.erlwood.knime.core.io" icon="icons/viewers.png" level-id="org.erlwood.knime.core.view" name="Viewers" path="/community/ErlwoodNodes/"/>	 		
+   	</extension>
+   
+	<extension point="org.knime.workbench.repository.nodes">
+			  		
+		<!-- I/O -->
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.listfileswithauth.ListFilesWithAuthNodeFactory"/>
+	 	<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.downloadfileswithauth.DownloadFilesWithAuthNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.uploadfileswithauth.UploadFilesWithAuthNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.xlswriter.XLSWriterNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.xlsenumeratenamedranges.XLSEnumerateNamedRangesNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.xlsnamedrangereader.XLSNamedRangeReaderNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.tabletostring.TableToStringNodeFactory"/>
+        <node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.io" factory-class="org.erlwood.knime.nodes.stringtotable.StringToTableNodeFactory"/>
+        	
+		 	
+		<!-- Viewers -->
+		<node category-path="/community/ErlwoodNodes/org.erlwood.knime.core.view" factory-class="org.erlwood.knime.nodes.graph.NGraphNodeFactory"/>
+		  			
+		
+	</extension>
+	
+	 <extension point="org.knime.product.splashExtension">
+		<splashExtension icon="icons/Farm-Fresh_green.png" id="Erlwood" tooltip="Elrwood KNIME Community nodes."/>
+	 </extension>
+	
+	 <extension point="org.eclipse.core.runtime.preferences">
+	    <initializer class="org.erlwood.knime.PreferenceInitializer"/>
+	 </extension>
+	 
+	 <extension point="org.eclipse.ui.preferencePages">
+	    <page category="org.knime.workbench.ui.preferences" class="org.erlwood.knime.ErlwoodPreferencesUI" id="org.erlwood.knime.ErlwoodPreferencesUI" name="Erlwood"/>
+	    <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.AuthenticationPreferencesUI" id="org.erlwood.knime.AuthenticationPreferencesUI" name="Authentication Preferences"/>
+	    <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.WebViewerPreferencesUI" id="org.erlwood.knime.WebViewerPreferencesUI" name="Web Viewer Preferences"/>
+	    <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.DebuggingPreferencesUI" id="org.erlwood.knime.DebuggingPreferencesUI" name="Debugging Preferences"/>        	
+	 </extension>
+	 
+	<extension point="org.eclipse.ui.startup">
+		<startup class="org.erlwood.knime.StartupLauncher"/>
+	</extension>
+
+	<extension point="org.knime.rest.authentication">
+      <AuthenticateEachRequest class="org.erlwood.knime.utils.auth.ntlm.NTLMAuthentication" deprecated="false" name="NTLM">
+      </AuthenticateEachRequest>
+   </extension>	
+
+</plugin>

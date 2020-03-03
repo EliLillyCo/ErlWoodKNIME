@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="VSMetrics.png" 
+		type="Manipulator">
+    <name>Virtual Screening Metrics</name>
+    
+    <shortDescription>
+    Computes set of popular performance estimations for a virtual screening. The input is expect to be sorted according to the ranking criteria (performance estimate), such that the most promising compound is in the first row.
+    The measure computed are the enrichment factor in the top X%, the area under the ROC curve (AUROC), the robust initial enhancement (RIE, Sheridan et al, JCICS, 2001, 41, 1395−1406) and the Boltzmann-enhanced discrimination of ROC (BEDROC, Truchon and Bayly, JCIM, 2007, 47 (2), pp 488–508)
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>Computes set of popular performance estimations for a virtual screening. The input is expect to be sorted according to the ranking criteria (performance estimate), such that the most promising compound is in the first row.
+    The measure computed are the enrichment factor in the top X%, the area under the ROC curve (AUROC), the robust initial enhancement (RIE, Sheridan et al, JCICS, 2001, 41, 1395−1406) and the Boltzmann-enhanced discrimination of ROC (BEDROC, Truchon and Bayly, JCIM, 2007, 47 (2), pp 488–508)
+    </intro>
+        
+        <option name="Activity column">Numerics column containing the true activity class. A compound is regarded as active if its respective property is above zero.</option>
+        <option name="BEDROC alpha">The alpha parameter used to compute the RIE (Robust Initial Enhancement) and the BEDROC</option>
+        <option name="% Enrichment Factor">The top X% of the ranked data is used to compute the enrichment of true actives in that part.</option>
+            
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Query Input">Table sorted with respect to the screening score (e.g. similarity)</inPort>
+        <outPort index="0" name="Metrics Output">VS Metrics</outPort>
+    </ports>   
+     
+</knimeNode>

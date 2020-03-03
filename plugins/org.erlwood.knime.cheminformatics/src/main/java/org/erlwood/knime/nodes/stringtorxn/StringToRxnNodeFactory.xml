@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="StringToRxn.png" 
+		type="Manipulator">
+    <name>String to Reaction</name>
+    
+    <shortDescription>
+        Converts a string column to a column containing Reaction objects.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	Attempts to convert String compatible column to column containing Reaction objects. The 
+        	output can either be appended as a new column or can replace an old columns.
+		</intro>
+        
+        
+        <option name="Source Column">
+        	Use the drop-down list to select the column that you want to convert.
+        </option>
+        
+        <option name="Name of the new column">
+        	Type a name for the newly created column.
+        </option>
+        
+        <option name="Output">
+        	Select whether to append a new column to the input data table or the replace the 
+        	original column.
+        </option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input Data">
+        	Please provide an input which contains at least one string-compatible column.
+        </inPort>
+        
+        <outPort index="0" name="Converted Data">
+        	The output of the node. A new column containing Reaction objects is either appended or 
+        	has replaced the source column. The rest of the input table is not modified.
+        </outPort>
+    </ports>
+    
+    <views>
+    	<view index="0" name="Structures">
+    		View the converted chemical reactions with MarvinView.
+    	</view>
+    </views>
+</knimeNode>

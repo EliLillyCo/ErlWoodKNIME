@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="FingerprintSimilarity.png" 
+		type="Manipulator">
+    <name>Fingerprint Similarity</name>
+    
+    <shortDescription>
+      Computes the bit vector similarity of one or multiple query fingerprints to a set of data fingerprints. If multiple queries should be used the respective checkbox should be ticked and an appropriate fusion method selected.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        Computes the bit vector similarity of one or multiple query fingerprints to a set of data fingerprints. If multiple queries should be used the respective checkbox should be ticked and an appropriate fusion method selected.
+        </intro>
+        
+        
+        <option name="Query column">Column in the first input table containing the query fingerprints (must be of type DenseBitVector)</option>
+        <option name="Data column">Column in the second input table containing the data fingerprints (must be of type DenseBitVector)</option>
+        <option name="Similarity measure">The similarity method that should be used</option>
+        <option name="Multi-query fusion">Tick the box if the similarities to all available queries should be combined into a single fused similarity. If the box is not checked only the first query is considered.</option>
+        <option name="Fusion method">Mathematical approach to combine multiple similarities into one similarity score</option>
+        
+        
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Query Table">Table containing the query fingerprints</inPort>
+        <inPort index="1" name="Data Table">Table containing the data fingerprints</inPort>
+
+        <outPort index="0" name="Similarity Output">Data table augmented with an additional numerical column containing the computed fingerprint similarity</outPort>
+    </ports>   
+
+</knimeNode>

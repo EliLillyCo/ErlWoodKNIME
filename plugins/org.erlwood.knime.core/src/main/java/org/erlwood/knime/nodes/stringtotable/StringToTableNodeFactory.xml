@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./stringtotable.png" 
+		type="Manipulator">
+    <name>String to Table</name>
+    
+    <shortDescription>
+    	Converts the given base 64 encoded string back into the original table format.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	Converts the given string (created by the <b>Table to String</b> node) back into the original
+    		table format.
+        </intro>
+        
+        <option name="String Column:">
+        	Select the column containing the string to convert back to a table (optional).
+        </option>
+        
+        <option name="String Variable:">
+        	Select the variable containing the string to convert back to a table (optional).
+        </option>
+    </fullDescription>
+    
+    <ports>
+    	<inPort index="0" name="String Input">
+    		The string to convert back to the original table format.
+    	</inPort>
+    	
+    	<outPort index="0" name="Table Output">
+    		The original table format contained within the string.
+    	</outPort>
+    </ports>
+</knimeNode>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?>
+<plugin>
+    
+    <extension-point id="ErlwoodHeaderSupplier" name="Erlwood Header Supplier" schema="schema/ErlwoodHeaderSupplier.exsd"/>
+    <extension-point id="ErlwoodWebServiceTabFactory" name="Erlwood WebService Tab Factory" schema="schema/ErlwoodWebServiceTabFactory.exsd"/>
+    <extension-point id="ErlwoodWebServiceURLSupplier" name="Erlwood Web Service URL Supplier" schema="schema/ErlwoodWebServiceURLSupplier.exsd"/>
+    <extension-point id="ErlwoodKerberosAuthSupplier" name="Erlwood Kerberos Authentication Supplier" schema="schema/ErlwoodKerberosAuthSupplier.exsd"/>
+  
+	 <extension point="org.eclipse.core.runtime.preferences">
+	    <initializer class="org.erlwood.knime.WebServicePreferenceInitializer"/>
+	 </extension>
+	 
+	 <extension point="org.eclipse.ui.preferencePages">	    
+        <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.utils.gui.WebServiceSettingsPreferencePage" id="org.erlwood.knime.utils.gui.WebServiceSettingsPreferencePage" name="Web Service Settings" /> 		
+	 </extension>
+
+</plugin>

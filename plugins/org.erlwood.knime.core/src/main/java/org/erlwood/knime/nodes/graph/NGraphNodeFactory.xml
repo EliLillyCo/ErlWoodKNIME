@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./default.png" 
+		type="Visualizer">
+    <name>2D/3D Scatterplot</name>
+    
+    <shortDescription>
+        
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>A node which can render two and three dimensional graphs. Points may also be coloured or sized by further sets of categorical or continuous variable columns. Coloring and sizing can also be based on the data tables colour and size models. 
+        To toggle 2D/3D modes, simply select or deselect the z value column. You can select points by drawing a box round them (hold down control in 3D mode). To rotate in 3D mode use the mouse: you can zoom the viewpoint with the mouse wheel. To zoom in on particular data, select the points you want, then pick 'zoom to selection' from the view menu. To reset the zoom pick the appropriate option from the same menu. You can also zoom in and out by using the range sliders. To view supplemental information for an individual datapoint, right click on the point and a pop up window will appear. You can choose what is displayed here by selecting a column from the 'label' drop down, or alternatively a selection of columns which is set up via the node dialog. The view will display the column values as specified by the default renderer for that column (e.g. special types like chemical structures appear as structures if an appropriate renderer is installed, etc)
+        
+        </intro>
+         <option name="max rows">the maximum number of rows to plot</option>
+         <option name="max values">the maximum number of nominal values which are included as possibilities</option>
+   		<option name="popup columns">the columns to be included in the popup detail for graph points</option>
+   </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Data Input">
+        	Input table containing data to plot.
+		</inPort>
+    </ports>    
+    <views>
+        <view index="0" name="Scatter Plot">
+        	A scatter plot view of 2D or 3D.
+        </view>
+    </views>
+</knimeNode>

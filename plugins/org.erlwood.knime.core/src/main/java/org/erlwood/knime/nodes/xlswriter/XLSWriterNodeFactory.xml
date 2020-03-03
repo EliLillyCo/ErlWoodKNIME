@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./default.png"
+		type="Source">
+    <name>XLS Coloured Writer</name>
+    
+    <shortDescription>
+        Writes an XLS file, you can customise the background colour of the cells in the XLS file using the colour tab in the node configuration. 
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	Writes an XLS file. You can customise the background colour of the cells in the XLS file by using the colour tab in the node configuration. For dialog and ports description, see "XLS Writer" node.     
+    	</intro>        
+        
+        
+   </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Data Input">
+        	The input to write to an XLS file with colour information.
+		</inPort>
+    </ports>    
+
+</knimeNode>

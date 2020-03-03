@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="GraphRenderer.png" 
+		type="Manipulator">
+    <name>Activity Cliffs Viewer</name>
+    
+    <shortDescription>
+        A viewer for networks of molecules.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>Structures and activities of molecules is best viewed in the context of chemical neighbourhood.
+        In the network view, molecules are represented by nodes coloured according to chosen property. A pair of nodes is
+        connected based on an edge similarity cutoff provided in options. The edge is coloured in green if the ratio of activity difference to
+        chemical distance is higher than the "cliff" cutoff set in options.
+        </intro>
+                
+        <option name="PropertColunm">Choose the (double) column to take the molecular property/activity from.</option>
+        <option name="SmilesColunm">Choose the column containing smiles strings of the molecules.</option>
+        <option name="MolNameColunm">Choose the column containing names of molecules, such as LSN.</option>
+        <option name="EdgeCutoff">Edges will be drawn for pairs of molecules closer in chemical space than this cutoff.</option>
+        <option name="CliffCutoff">Edges will be coloured green if this edge is a cliff, i.e. has a high difference in property as compared to chemistry.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Molecular properties">Smiles, names and properties of molecules should be provided here.</inPort>
+        <inPort index="1" name="Molecular properties">NxN matrix of pairwise molecular distances should be provided here, say as output by MolPairDist node.</inPort>
+
+        <outPort index="0" name="Molecular properties">Import 0 is copied here.</outPort>
+    </ports>    
+    <views>
+        <view index="0" name="Network View">The network view uses prefuse Java 2D library and Marvin beans.</view>
+    </views>
+</knimeNode>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./downloadfiles.png" 
+		type="Source">
+    <name>Download Files with Authentication</name>
+    
+    <shortDescription>
+        Download the files in the input URLs from a network share to a temporary
+        local directory.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+			This node will create a temporary directory and download to that 
+			directory all the files given by the input URLs (samba, file or
+			UNC paths).
+			<br /><br />
+			
+			<p>Authentication: To use the network functionality of this node you must specify
+			workflow credentials. This node will not automatically use your 
+			local login credentials.</p>
+         </intro>
+        
+        
+        <option name="File URL Column:">
+        	Select the column containing the files to download.
+        </option>
+
+		<option name="Delete on Reset:">
+			If checked the downloaded files with be deleted when the node is 
+			reset.
+		</option>
+    </fullDescription>
+    
+    <ports>
+    	<inPort index="0" name="URL Input">
+    		Input containing at least one column with URLs in either samba, file
+    		or UNC format to download.
+    	</inPort>
+    	
+        <outPort index="0" name="File List Output">
+        	Output containing the original data set with an additional column 
+        	containing the paths to the downloaded files in their temporary 
+        	directory.
+        </outPort>
+    </ports>    
+</knimeNode>

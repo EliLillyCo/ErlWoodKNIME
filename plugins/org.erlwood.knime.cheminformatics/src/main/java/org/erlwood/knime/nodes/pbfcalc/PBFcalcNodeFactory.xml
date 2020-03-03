@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="PBF.png" 
+		type="Predictor">
+    <name>Plane of Best Fit Calculator</name>
+    
+    <shortDescription>
+        Calculates the Plane of Best Fit (PBF) value for a molecule or series of molecules. 
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>Calculates the Plane of Best Fit (PBF) value for a molecule or series of molecules. 
+        Follows the method outlined by Nicholas C. Firth, Nathan Brown, and Julian Blagg from the The Institute of Cancer Research and included in RDKit. 
+        Further details can be found at http://pubs.acs.org/doi/abs/10.1021/ci300293f.
+        </intro>
+        
+        <option name="Columns to PBF value">
+        Select the columns of SDF data to calculate the plane of best fit (PBF) value for.
+        </option>
+        <option name="Remove Hydrogens before calculations">
+        Select whether to include hydrogens in calculation. Default is not to as in PBF paper. 
+        </option>
+
+        
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="SDF Input">Table including columns of type SDF from which to calculate PBF value</inPort>
+        <outPort index="0" name="Calculated Output">Output table including PBF values for selected SDF columns</outPort>
+    </ports>
+    
+</knimeNode>

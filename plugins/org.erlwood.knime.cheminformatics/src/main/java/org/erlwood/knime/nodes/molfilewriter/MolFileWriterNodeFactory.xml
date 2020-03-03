@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="MolFileWriter.png"
+		type="Sink">
+    <name>Chemical File Writer</name>
+    
+    <shortDescription>
+        Writes chemical structures to a file.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+Writes chemical structures to a file. A variety of different file formats are
+ supported.
+        </intro>
+        
+        <option name="File name">The name of the file to which to write.</option>
+        <option name="File format">The desired output format.</option>
+        <option name="Structures column">
+The column in the input table which contains the chemical structures to be 
+ written.</option>
+		<option name="Write verbatim">
+Select if you want the output file to contain the contents of the 
+ "Structures column" verbatim. In this case no additional properties will be
+ appended. If not selected (default) the source column will be converted to
+ Chemaxon Molecule object if needed and this object will be used to generate
+ the output file.</option>
+	<option name="Append properties">
+Select additional columns from the input table to export as properties for each
+ molecule. Please note that some file formats, i.s. smiles, does not support
+ properties.
+	</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Molecule Input">
+A data table with at least one string-compatible column. Please note that while
+ not enforced this column should contain valid representation of a molecule, i.e.
+ smiles, sd string, etc. 
+		</inPort>
+        <outPort index="0" name="Written Output">
+The input table is simply passed through. While the writer nodes are usually
+ dead end, this is needed in order to enable the use of this node in loops where
+ a synchronisation problems may arise otherwise.
+        </outPort>
+    </ports>    
+</knimeNode>

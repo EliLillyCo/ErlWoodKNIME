@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="RowPairer.png" 
+		type="Manipulator">
+    <name>Free-Wilson Matched Pairs</name>
+    
+    <shortDescription>Finds matched pairs of molecules using selected columns.</shortDescription>
+    
+    <fullDescription>
+        <intro>
+Compares rows using user specified columns and pairs up any two rows which
+ differ only in user specified number of columns. Optionally, for each pair 
+ calculates the differences/ratios between user specified properties.
+		</intro>
+        
+ <!--       <option name="Values to subtract for each pair">
+For each pair of rows formed the absolute value of the difference between this
+ property is stored. See also "Highlight differences using".
+        </option>-->
+        <option name="Highlight differences using">
+The node appends three columns to the original input table. The first contains 
+ the number of pairs in which the row participates while the second and the 
+ third contain the row key of the other row in the pair and the property 
+ difference for this "best" pair. The "best" pair may be either the one with 
+ the "Maximum" or "Minimum" absolute difference between the selected property.  
+        </option>
+        <!--<option name="Number of differences to pair up rows">
+Specify exactly how many columns in two rows should differ for these rows to
+ form a pair.
+        </option>-->
+		<option name="Column to output in pairs">
+Select a column (or the row ids) which to use in the "Pairs" table, i.e., the
+ second output port,see below.
+        </option>
+        <option name="also invert output">
+not only the match pair "mol1->mol2" is written, but also the pair "mol2->mol1"
+        </option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Data Input">
+Regular data table. No constraints are imposed on it.
+        </inPort>
+        
+        <!--  outPort index="0" name="Input Data + 'Best' Pair Info">
+The input table with three columns attached. "Number of Pairs" tells you in how
+ many pairs this particular row participates. "Highlighted Pair With" gives you
+ the row id of the other member of the "best" pair (see "Highlight differences
+ using" above). "Highlighted Diff" gives you the absolute value of the 
+ difference between the property you have selected in the 'best' pair.  
+        </outPort -->
+        
+        <outPort index="0" name="Matched Output">
+A table with all matched pairs.
+        </outPort>
+    </ports>    
+</knimeNode>

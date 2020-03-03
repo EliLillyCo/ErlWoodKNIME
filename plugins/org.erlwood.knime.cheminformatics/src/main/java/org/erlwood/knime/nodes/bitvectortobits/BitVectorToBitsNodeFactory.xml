@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode 
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd"
+		icon="BitVectorToBits.png" 
+		type="Manipulator">
+    <name>Fingerprints Expander</name>
+    
+    <shortDescription>Splits BitVector values to individual bits.</shortDescription>
+    
+    <fullDescription>
+        <intro>
+Splits column with BitVector values to a number of individual columns with one
+ bit in each of them. That is, 256 new columns will be created for a BitVector
+ with 256 bits.
+        </intro>
+        
+        <option name="Column name">The name of the column of BitVectors which will be split.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="BitVector Input">
+A table with at least one BitVector compatible column
+		</inPort>
+		
+        <outPort index="0" name="Expanded Output">
+The input table with additional columns for each bit in the BitVectors. Note that
+ the number of these columns can be large if the underlying BitVectors are large.
+        </outPort>
+    </ports>    
+</knimeNode>

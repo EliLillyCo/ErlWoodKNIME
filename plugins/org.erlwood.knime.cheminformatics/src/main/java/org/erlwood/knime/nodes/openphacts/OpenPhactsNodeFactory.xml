@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode 
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd"
+		icon="openphacts.png" 
+		type="Manipulator">
+    <name>Open PHACTS Linked Data API</name>
+    
+    <shortDescription>
+       Open PHACTS Linked Data API
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        <p>Node that fetches and tabulates information from the Open PHACTS API.</p>
+				
+		<h4>Methods</h4>  
+ 		  
+          <ul>       
+          	<!-- Assays -->
+			<li>Get Assay ( Example input: http://openinnovation.lilly.com/bioassay#29 )</li>
+			
+			<!-- Chemical Structure Search -->
+			<li>Get Compound URI ( Example input: CNC(=O)c1cc(ccn1)Oc2ccc(cc2)NC(=O)Nc3ccc(c(c3)C(F)(F)F)Cl )</li>
+			<li>Get Compounds By Similarity ( Example input: CC(=O)Oc1ccccc1C(=O)O )</li>
+			<li>Get Compounds By Substructure ( Example input: CC(=O)Oc1ccccc1C(=O)O )</li>
+		
+			<!-- Compound -->
+			<li>Get Compound ( Example input: http://www.conceptwiki.org/concept/38932552-111f-4a4e-a46a-4ed1d7bdf9d5 )</li>
+			<li>Get Compound Classes ( Example input: http://www.conceptwiki.org/concept/38932552-111f-4a4e-a46a-4ed1d7bdf9d5 )</li>
+			<li>Get Compounds By Class ( Example input: http://purl.obolibrary.org/obo/CHEBI_24431 )</li>
+			<li>Get Compound Pharmacology ( Example input: http://www.conceptwiki.org/concept/38932552-111f-4a4e-a46a-4ed1d7bdf9d5 )</li>
+				
+			<!-- Classes -->
+			<li>Get Root Classes</li>
+			<li>Get Child Classes ( Example input: http://purl.uniprot.org/enzyme/6.2.-.- )</li>
+			<li>Get Parent Classes ( Example input: http://purl.uniprot.org/enzyme/6.2.-.- )</li>
+		
+			<!-- Diseases -->			
+			<li>Get Disease ( Example input: http://linkedlifedata.com/resource/umls/id/C0004238 )</li>
+			<li>Get Disease Associations ( Example input: http://linkedlifedata.com/resource/umls/id/C0004238 )</li>
+			<li>Get Target Associations ( Example input: http://purl.uniprot.org/uniprot/Q9Y5Y9 )</li>
+			<li>Get Diseases By Target ( Example input: http://purl.uniprot.org/uniprot/Q9Y5Y9 )</li>
+			<li>Get Target By Disease ( Example input: http://linkedlifedata.com/resource/umls/id/C0004238 )</li>
+		
+			<!-- Diseases -->			
+			<li>Free Text Search ( Example input: aspirin )</li>
+			
+			<!-- Targets -->			
+			<li>Get Target ( Example input: http://www.conceptwiki.org/concept/00059958-a045-4581-9dc5-e5a08bb0c291 )</li>
+			<li>Get Target Classes ( Example input: http://purl.uniprot.org/uniprot/P14756 )</li>
+			<li>Get Target Compound Classes ( Example input: http://purl.uniprot.org/uniprot/P00918 )</li>
+			<li>Get Targets By Class ( Example input: http://purl.uniprot.org/enzyme/6.2.-.- )</li>
+			<li>Get Target Pharmacology ( Example input: http://www.conceptwiki.org/concept/00059958-a045-4581-9dc5-e5a08bb0c291 )</li>
+			<li>Get Target Pharmacology By Class ( Example input: http://purl.uniprot.org/enzyme/6.2.-.- )</li>
+		</ul>
+        </intro>
+        
+        
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input">Optional Input data table.</inPort>
+        
+        <outPort index="0" name="Output">Results table</outPort>
+        <outPort index="1" name="Raw Output">Raw JSON / XML Results</outPort>
+    </ports>    
+    <views>
+        <view index="0" name="Raw Data Explorer View">
+        	Display the raw JSON / XML Results along with a user friendly tree.
+		</view>
+    </views>
+</knimeNode>

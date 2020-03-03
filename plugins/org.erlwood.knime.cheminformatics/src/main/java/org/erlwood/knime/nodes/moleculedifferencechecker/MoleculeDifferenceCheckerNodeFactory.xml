@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./MoleculeDifferenceChecker.png" 
+		type="Other">
+    <name>Molecule Difference Checker</name>
+    
+    <shortDescription>
+        Perform a difference check on any molecule compatible input columns.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	Perform a difference check on any molecule compatible input columns.
+        	If the tables in the input do not match in terms of column types, names or row count then this node will fail.
+        	This node will also fail immediately it encounters molecules in the matching rows between the inputs that do not match.
+        	This node is designed to be used as part of the automated test system.
+        </intro>
+        
+        <option name="Fail on First Error:">
+        	If selected and a difference is found between the molecules in 
+        	port 1 and port 2 the node will immediately stop and throw an
+        	exception. This is useful for testing systems. For an actual
+        	comparison view of the content unselect this option.
+        </option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Datatable">
+        	Datatable with the output of the node to test.
+       	</inPort>
+        <inPort index="1" name="Golden Table">
+        	The "golden" (i.e. correct example) datatable.
+        </inPort>
+        
+        <outPort index="0" name="Datatable">
+        	Datatable with the output of the node to test with the checked molecule columns removed.
+        </outPort>
+        <outPort index="1" name="Golden Table">
+        	The "golden" (i.e. correct example) datatable with the checked molecule columns removed.
+        </outPort>
+    </ports>
+    
+    <views>
+        <view index="0" name="Differences View">
+        	Display the differences that exist between the molecules in input
+        	ports 1 and 2.
+		</view>
+    </views>
+</knimeNode>

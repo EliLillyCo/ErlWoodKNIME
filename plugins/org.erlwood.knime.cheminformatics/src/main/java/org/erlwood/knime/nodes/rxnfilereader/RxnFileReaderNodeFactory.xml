@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 1.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="RxnFileReader.png" 
+		type="Source">
+    <name>Chemical Reactions File Reader</name>
+    
+    <shortDescription>
+        Reads chemical reactions from a file.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+Use this node to read chemical reactions stored on your hard drive.
+ Different file formats are supported. These include, but are not limited to,
+ Chemical Markup Language (CML) files; a number of Symyx (former MDL) formats -
+ rxn, rdf; SMILES/SMIRKS; etc. See
+ http://www.chemaxon.com/marvin/help/formats/formats.html for an extensive list.
+ 		</intro>
+        
+        <option name="Select file(s)">
+ Use the Add and Remove buttons to add to the list of files to process. Changing the list will automatically tigger a scan in either shallow or deep mode.
+        </option>
+        
+        <option name="Scan Depth">
+ 	Shallow scan is the first 10 records of each file, whilst a deep scan will scan each file completely for properties.
+        </option>
+        
+        <option name="Properties to keep">
+All reaction properties found in the first 10 records of the input file are
+ presented in the left-hand side list. Use the provided controls to select the
+ properties you are interested in. These will be read and stored in the output
+ of the node. Note that all properties are treated as strings - in the likely
+ case that some or all of the properties are numeric you may use the 
+ "String To Number" node. The "String To Number" node is part of the default 
+ KNIME installation and may be found under the category
+ "Data Manipulation | Column".
+        </option>
+        
+        <option name="Output options -> General -> Aromatize molecules">
+Select this option if you want the chemical structures which constitute the
+ reaction to be aromatized using the default Chemaxon algorithm. Reccomended.
+        </option>
+        
+        <option name="Output options -> Additional columns">
+In addition to the "native" Chemaxon RxnMolecule object a number of columns 
+ containing different text-based representations of the read reactions can be
+ created as well. These are useful when an interaction with another
+ chemoinformatics package is needed. For example, to use this reader with the
+ CDK library (since it supports much more file formats) you can output an RDF 
+ column which can than be processed by CDK.
+        </option>
+        
+    </fullDescription>
+    
+    <ports>
+        <outPort index="0" name="Read Reactions Output">
+The read chemical reactions are output here. A column containing Chemaxon
+ RxnMolecule objects is always present. Depending on the configuration, a number
+ of other columns - representing the read reactions in another string-based
+ format or containing properties read from the input file - may be present as
+ well.
+ 		</outPort>
+ 		<outPort index="1" name="Failed to Read Reactions Output">
+The  chemical reactions that failed to read are output here. 
+ 		</outPort>
+    </ports>    
+    
+    <views>
+        <view index="0" name="Read Reactions">View the read reactions with MarvinView</view>
+    </views>
+</knimeNode>

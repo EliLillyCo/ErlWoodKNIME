@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="SimilarityViewer.png" 
+		type="Visualizer">
+    <name>Similarity Viewer</name>
+    
+    <shortDescription>
+Displays similarity matrix as a heat map. Also allows the sorting with a 
+ "query" molecule.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>Displays similarity matrix as a heat map. Also allows the sorting with a 
+ "query" molecule.
+        </intro>
+        
+        
+        <option name="Structures column">
+The column in the input table which contains chemical structures.
+		</option>
+        <option name="Distance/Similarity matrix">
+The column which contains the matrix (as calculated with "Distance Matrix 
+ Calculate" node from KnimeLabs).
+        </option>
+        <option name="Distance matrix">
+Select this option if the matrix selected above is a distance matrix. Otherwise
+ a similarity matrix is assumed (default). 
+		</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input data">
+A data table with at least one column which contains chemical structures and at
+ least one column which contains a distance or similarity matrix as calculated
+ with "Distance Matrix Calculate" node from KnimeLabs
+        </inPort>
+    </ports>    
+    <views>
+        <view index="0" name="Heat Map">A heat map view of the matrix</view>
+        <view index="1" name="Similarity to target">
+Allows you to sort the input data using a "query" structure. That is, displays
+ the most (dis)similar structures to the "query" on top.
+        </view>
+    </views>
+</knimeNode>

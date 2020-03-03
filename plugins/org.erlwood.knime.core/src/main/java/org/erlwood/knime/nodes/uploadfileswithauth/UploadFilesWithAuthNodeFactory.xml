@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./uploadfiles.png" 
+		type="Source">
+    <name>Upload Files with Authentication</name>
+    
+    <shortDescription>
+        Upload the files in the input paths to the specified network share.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+			This node will upload the given local file paths to a network
+			share.
+			<br /><br />
+			
+			<p>Authentication: To use the network functionality of this node you must specify
+			workflow credentials. This node will not automatically use your 
+			local login credentials.</p>
+         </intro>
+         
+         <option name="Network Share Path:">
+        	The full path to the network share and directory that you wish to 
+        	copy the files to.
+        </option>
+        
+        <option name="Local File Path Column:">
+        	Optional column containing paths to local files that should be
+        	copied to the server.
+        	Either this or 'Local File Path Variable' must be set.
+        </option>
+        
+        <option name="Local File Path Variable:">
+        	Optional variable containing a single path to a local that should
+        	be copied to the server.
+        	Either this or 'Local File Path Column' must be set.
+        </option>
+        
+		<option name="Network Share Path:">
+        	Whether the node should overwrite any existing files with the same
+        	name already on the share.
+        	Note that existing files will be overwritten without confirmation.
+        </option>
+    </fullDescription>
+    
+    <ports>
+    	<inPort index="0" name="File List Input">
+    		Optional input containing files that are to be uploaded to the
+    		network share.
+    	</inPort>
+    	
+    	<outPort index="0" name="Remote Copy Output">
+    		UNC paths to the copied files on the network share.
+    	</outPort>
+    </ports>    
+</knimeNode>

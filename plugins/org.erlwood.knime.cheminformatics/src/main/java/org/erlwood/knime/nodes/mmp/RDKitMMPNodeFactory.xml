@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="./logo64.png" 
+		type="Manipulator">
+    <name>Automated Matched Pairs</name>
+    
+    <shortDescription>
+    	Detects single-point changes within a chemical data set and outputs an SAR table.
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	This node detects and outputs all the possible matched molecular pairs in a data set and returns the pairs,
+        	along with the corresponding (single-point) chemical transformations and property changes. Requires the RDKit nodes.
+        	<p>Because it is not based on MCS detection, the algorithm comparatively fast and efficient. More details can be found here:</p>
+        	<p>1. Wagener, M. and Lommerse, J.P.M. (2006). "The quest for bioisosteric replacements". Journal of Chemical Information and Modeling, 46 (2), 677-685.</p>
+        	<p>2. Hussain, J. and Rea, C. (2010). "Computationally efficient algorithm to identify matched molecular pairs (MMPs) in large data sets". Journal of Chemical Information and Modeling, 50 (3), 339-348.</p>
+        	<p>3. Papadatos, G. et al. (2010). "Lead optimization using matched molecular pairs: Inclusion of contextual information for enhanced prediction of hERG inhibition, solubility, and lipophilicity". Journal of Chemical Information and Modeling, 50 (10), 1872-1886.</p>
+        
+        </intro>
+        
+        <option name="RDKit molecule column">The column that contains the RDKit molecules.</option>
+        <option name="ID column">The column that contains the IDs or names of the molecules</option>
+        <option name="Property column">The column that contains the (measured) property values of the molecules (e.g. activity)</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="RDKit molecules, IDs and property values">Data with RDKit molecules, IDs and property values</inPort>
+
+        <outPort index="0" name="Matched pairs">Table containing matched pairs (left (L) and right (R)), transformation, context (=common substructure), property change, 
+        MCS distance and transformation atom count</outPort>
+        <outPort index="1" name="Network">Network adjacency matrix</outPort>
+    </ports>    
+   
+</knimeNode>

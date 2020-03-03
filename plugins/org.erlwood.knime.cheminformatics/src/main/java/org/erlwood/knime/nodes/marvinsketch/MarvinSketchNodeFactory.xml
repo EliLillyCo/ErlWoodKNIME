@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd" 
+		icon="MarvinSketch.png" 
+		type="Source">
+
+    <name>Chemical Sketcher</name>
+    
+    <shortDescription>Structure input with MarvinSketch.</shortDescription>
+    
+    <fullDescription>
+        <intro>
+			Use this node to draw structures and/or reactions using the MarvinSketch editor.
+			Multiple structures and/or reactions can be entered. Use the 'Configure' menu item or 
+			double click this node to bring up the editor.
+        </intro>
+    </fullDescription>
+    
+    <ports>
+        <outPort index="0" name="Structures Output">
+        	All drawn structures are output here.
+        </outPort>
+        
+        <outPort index="1" name="Reactions Output">
+        	All drawn reactions are output here.
+        </outPort>
+    </ports>
+    
+    <views>
+    	<view index="0" name="Structures">
+    		View containing the structures you have drawn in the MarvinSketch window.
+    	</view>
+    	
+    	<view index="1" name="Reactions">
+    		View containing the reactions you have drawn in the MarvinSketch window.
+    	</view>
+    </views>  
+</knimeNode>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE knimeNode PUBLIC "-//UNIKN//DTD KNIME Node 2.0//EN" "http://www.knime.org/Node.dtd">
+<knimeNode 
+		xmlns="http://knime.org/node/v3.1" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://knime.org/node/v3.1 https://knime.org/node/v3.1.xsd"
+		icon="../../icons/hilite.png" 
+		type="Visualizer">
+    <name>Annotate Molecules</name>
+    
+    <shortDescription>
+     Annotate Molecules.   
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        	This node allows you to add an annotation column to the incoming table. Use the configure to visualise the molecules and add your comments.
+		 
+        
+        </intro>
+                
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Molecule Input">Molecules to be annotated</inPort>        
+        <outPort index="0" name="Annotated Output">Molecules with comments</outPort>
+    </ports>    
+</knimeNode>
