@@ -1,0 +1,6 @@
+/**/target
+/**/.settings
+.m2
+.project
+workspace
+**/*.jar
