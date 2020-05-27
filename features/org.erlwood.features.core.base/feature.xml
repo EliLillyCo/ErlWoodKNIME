@@ -2,7 +2,7 @@
 <feature
       id="org.erlwood.features.core.base"
       label="Erlwood Knime Open Source Core"
-      version="4.0.1.qualifier"
+      version="4.0.2.qualifier"
       provider-name="Erlwood"
       plugin="org.erlwood.knime.core">
 
