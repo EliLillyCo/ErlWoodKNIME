@@ -3,4 +3,4 @@
 .m2
 .project
 workspace
-**/*.jar
+/**/*.jar
