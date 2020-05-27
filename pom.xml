@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.erlwood.knime</groupId>
 	<artifactId>erlwood-knime</artifactId>
-	<version>4.0.1-SNAPSHOT</version>
+	<version>4.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -74,7 +74,7 @@
 				<extensions>true</extensions>
 			</plugin>
 			
-			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.0.1-SNAPSHOT" -->
+			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.0.2-SNAPSHOT" -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
