@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Core
 Bundle-SymbolicName: org.erlwood.knime.core;singleton:=true
-Bundle-Version: 4.0.2.qualifier
+Bundle-Version: 4.3.1.qualifier
 Bundle-Vendor: Erlwood
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.apache.commons.logging;bundle-version="1.1.1",
@@ -24,7 +24,6 @@ Require-Bundle: org.apache.commons.logging;bundle-version="1.1.1",
  org.apache.cxf.cxf-rt-transports-http-hc;bundle-version="3.0.7";visibility:=reexport,
  org.apache.cxf.cxf-rt-rs-client;bundle-version="3.0.7";visibility:=reexport,
  org.knime.core;bundle-version="[4.0.0,5.0.0)",
- org.apache.aries.blueprint;bundle-version="1.1.0",
  org.knime.workbench.ui;bundle-version="[4.0.0,5.0.0)"
 Export-Package: jcifs,
  jcifs.dcerpc,

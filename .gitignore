@@ -4,3 +4,8 @@
 .project
 workspace
 /**/*.jar
+/**/.DS_Store
+pom.xml.versionsBackup
+/**/pom.xml.versionsBackup
+.*.iml
+/**/*.iml
