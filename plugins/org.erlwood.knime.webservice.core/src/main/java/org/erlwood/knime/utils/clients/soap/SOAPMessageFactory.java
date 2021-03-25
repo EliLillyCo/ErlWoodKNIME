@@ -46,12 +46,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.knime.core.node.NodeLogger;
 import org.w3c.dom.Document;
 
 /** Factory for generating SOAP request and response messages when making SOAP calls using
  * KNIME REST clients.
  * @author Tom Wilkin */
 public final class SOAPMessageFactory {
+	
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(SOAPMessageFactory.class);
 	
 	/** Class to hold a MultiPart include element. */
 	public static final class Include {
@@ -206,7 +209,7 @@ public final class SOAPMessageFactory {
 	{
 		if(value instanceof Map) {
 			// add a nested element
-			SOAPElement child = element.addChildElement(new QName(key));
+			SOAPElement child = element.addChildElement(key);
 			addParameters(child, (Map<String, Object>)value);
 		} else if(value instanceof List) {
 			// add a nested list
@@ -218,15 +221,18 @@ public final class SOAPMessageFactory {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime((Date)value);
 			XMLGregorianCalendar csal = DatatypeFactory.newInstance().newXMLGregorianCalendar((GregorianCalendar) cal);
-			element.addChildElement(key).addTextNode(csal.toXMLFormat());
+			SOAPElement child = element.addChildElement(key);
+			child.addTextNode(csal.toXMLFormat());
 		} else if(value instanceof Include) {
 			// handle nested multi-part elements
-			SOAPElement child = element.addChildElement(new QName(key));
+			SOAPElement child = element.addChildElement(key);
 			((Include)value).addToElement(child);
 		} else {
 			// catch all for string serialisable data types
 			String s = (value == null ? null : value.toString());
-			element.addChildElement(key).addTextNode(s);
+			SOAPElement child = element.addChildElement(key);
+			child.removeAttributeNS(child.getNamespaceURI(), "xmlns");
+			child.addTextNode(s);
 		}
 	}
 
