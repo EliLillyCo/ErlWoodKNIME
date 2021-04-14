@@ -46,15 +46,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.knime.core.node.NodeLogger;
 import org.w3c.dom.Document;
 
 /** Factory for generating SOAP request and response messages when making SOAP calls using
  * KNIME REST clients.
  * @author Tom Wilkin */
 public final class SOAPMessageFactory {
-	
-	private static final NodeLogger LOGGER = NodeLogger.getLogger(SOAPMessageFactory.class);
 	
 	/** Class to hold a MultiPart include element. */
 	public static final class Include {
