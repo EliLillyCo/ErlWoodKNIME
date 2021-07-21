@@ -7,6 +7,7 @@
 		<groupId>org.erlwood.knime</groupId>
 		<artifactId>erlwood-knime</artifactId>
 		<version>4.0.2-SNAPSHOT</version>
+		<relativePath>../..</relativePath>
 	</parent>
 	<artifactId>erlwood-target-platform</artifactId>
 	<packaging>eclipse-target-definition</packaging>
