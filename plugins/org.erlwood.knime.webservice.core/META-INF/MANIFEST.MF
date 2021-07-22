@@ -10,7 +10,12 @@ Bundle-ClassPath: erlwood-wscore.jar,
  target/lib/httpmime.jar,
  target/lib/httpclient-win.jar,
  target/lib/jna.jar,
- target/lib/jna-platform.jar
+ target/lib/jna-platform.jar,
+ target/lib/javax.activation-api.jar,
+ target/lib/jaxb-api.jar,
+ target/lib/javax.annotation-api.jar,
+ target/lib/jaxws-api.jar,
+ target/lib/javax.xml.soap-api.jar
 Bundle-Activator: org.erlwood.knime.WebServiceCoreActivator
 Bundle-ActivationPolicy: lazy
 Eclipse-ExtensibleAPI: true

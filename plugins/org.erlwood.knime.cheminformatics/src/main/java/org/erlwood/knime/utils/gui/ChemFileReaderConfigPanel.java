@@ -495,10 +495,10 @@ public class ChemFileReaderConfigPanel extends JPanel implements
 						SortedFilteredListModel rMdl = mPropLists.getRightListModel();
 						
 						lMdl.clear();
-						lMdl.addAll(newProperties);
+						lMdl.addAllItems(newProperties);
 						
 						rMdl.clear();
-						rMdl.addAll(newSelectedProps);
+						rMdl.addAllItems(newSelectedProps);
 						propPanelLayout.show(propPanel, PROP_PANEL);						
 						requiresScanning = false;
 					}					

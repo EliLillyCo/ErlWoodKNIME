@@ -78,7 +78,7 @@ public class SortedFilteredListModel<T extends Comparable<? super T>> extends De
      *
      * @param obj elements to be inserted into this List
      */
-	public synchronized void addAll(Collection<T> obj) {
+	public synchronized void addAllItems(Collection<T> obj) {
 		originalList.addAll(obj);
 		Collections.sort(originalList);
 		filter(lastFilterText);		
