@@ -6,16 +6,12 @@ Bundle-Version: 4.0.2.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Erlwood
 Bundle-ClassPath: erlwood-wscore.jar,
+ target/lib/jaxws-rt.jar,
  target/lib/commons-logging.jar,
  target/lib/httpmime.jar,
  target/lib/httpclient-win.jar,
  target/lib/jna.jar,
- target/lib/jna-platform.jar,
- target/lib/javax.activation-api.jar,
- target/lib/jaxb-api.jar,
- target/lib/javax.annotation-api.jar,
- target/lib/jaxws-api.jar,
- target/lib/javax.xml.soap-api.jar
+ target/lib/jna-platform.jar
 Bundle-Activator: org.erlwood.knime.WebServiceCoreActivator
 Bundle-ActivationPolicy: lazy
 Eclipse-ExtensibleAPI: true
@@ -40,5 +36,3 @@ Export-Package:
  org.erlwood.knime.utils.node,
  org.erlwood.knime.utils.settings,
  org.erlwood.knime.utils.settings.ui
-
-
