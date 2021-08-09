@@ -20,23 +20,47 @@
 */
 package org.erlwood.knime.utils.auth.ntlm;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.Authenticator;
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.PasswordAuthentication;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Logger;
 
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Invocation.Builder;
+import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
+import org.apache.cxf.configuration.security.AuthorizationPolicy;
 import org.apache.cxf.jaxrs.client.ClientConfiguration;
 import org.apache.cxf.jaxrs.client.WebClient;
+import org.apache.cxf.message.Message;
 import org.apache.cxf.transport.ConduitInitiatorManager;
+import org.apache.cxf.transport.http.auth.HttpAuthSupplier;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
+import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.NTCredentials;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
@@ -45,6 +69,7 @@ import org.knime.core.node.NodeLogger;
 import org.knime.core.node.workflow.CredentialsProvider;
 import org.knime.core.node.workflow.FlowVariable;
 import org.knime.core.node.workflow.ICredentials;
+import org.knime.core.util.ThreadLocalHTTPAuthenticator;
 import org.knime.rest.generic.UsernamePasswordAuthentication;
 /**
  * NTLM Authentication.
@@ -82,7 +107,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         } catch(Exception ex) {
             // Do nothing
         	LOG.error(ex.getMessage(), ex);
-        }    
+        }
     }
 
     /**
@@ -96,6 +121,37 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         bus.setExtension(NTLMConduitInitiatorManager.getInstance(), ConduitInitiatorManager.class);
     }
 
+    public static void NTMLPatch2(final Builder request) {
+        try {
+        	Class<?> NTLMAuthenticationProxyClass = Class.forName("sun.net.www.protocol.http.NTLMAuthenticationProxy");
+            for (Field f : NTLMAuthenticationProxyClass.getDeclaredFields()) {
+                if(f.getName().equals("proxy")) {
+                	Field proxyField = f;
+                	proxyField.setAccessible(true);
+                	Class c = proxyField.get(null).getClass();
+                	final Method createMethod = proxyField.get(null).getClass().getDeclaredMethod("create", boolean.class, URL.class, PasswordAuthentication.class);
+                	createMethod.setAccessible(true);
+                	
+                	ClientConfiguration conf = WebClient.getConfig(request);
+    				NTCredentials creds = (NTCredentials) conf.getRequestContext().get(Credentials.class.getName());
+    				PasswordAuthentication pa = new PasswordAuthentication(creds.getUserName(), creds.getPassword().toCharArray());
+    				URL url = new URL(conf.getHttpConduit().getAddress());
+    				try {
+    					url = new URL(url, "/");
+    				}catch(Exception ex) {}
+    				
+    				Object authenticationInfo = createMethod.invoke(proxyField.get(null), false, url, pa);
+    				final Method addToCatchMethod = authenticationInfo.getClass().getSuperclass().getDeclaredMethod("addToCache");
+    				addToCatchMethod.setAccessible(true);
+    	    		addToCatchMethod.invoke(authenticationInfo);
+                }
+            }
+        } catch (Exception ex) {
+            NodeLogger.getLogger(ThreadLocalHTTPAuthenticator.class)
+                .error(ex.getMessage(), ex);
+        }
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -104,7 +160,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         final Map<String, FlowVariable> flowVariables) {
         NTLMConduitInitiatorManager.getInstance().configureForNTLM(request);
         ClientConfiguration conf = WebClient.getConfig(request);
-     
+        
         //	Set any custom headers       
 		for (IHeaderSupplier hs : HEADER_SUPPLIERS) {
 	        for (Entry<String, Object> es : hs.getHeaders().entrySet()) {
@@ -122,7 +178,8 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         httpClientPolicy.setMaxRetransmits(1);
 
         conf.getHttpConduit().setClient(httpClientPolicy);
-
+        
+        NTMLPatch2(request);
 
         return request;
     }
