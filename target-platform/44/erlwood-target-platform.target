@@ -7,9 +7,8 @@
             <unit id="org.knime.features.json.feature.group" version="0.0.0"/>
             <unit id="org.knime.features.rest.feature.group" version="0.0.0"/>
             <unit id="org.knime.features.testing.application.feature.group" version="0.0.0"/>
-            <unit id="org.knime.targetPlatform.feature.group" version="0.0.0"/>
             <unit id="org.knime.features.distmatrix.feature.group" version="0.0.0" />
-            <unit id="org.knime.features.ext.chromium.feature.group" version="0.0.0"/>
+            <unit id="org.knime.features.ext.poi.feature.group" version="0.0.0"/>
             <repository location="http://update.knime.com/analytics-platform/4.4"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">

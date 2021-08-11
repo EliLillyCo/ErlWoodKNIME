@@ -15,7 +15,7 @@
 		
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<lib.directory>${project.basedir}/target/lib</lib.directory>
-		<target.version>42</target.version>
+		<target.version>44</target.version>
 	</properties>
 
 	<modules>
@@ -32,8 +32,8 @@
 		<module>features/org.erlwood.features.cheminformatics.base</module>
 
 		<!-- test plugin modules -->
-		<module>tests/org.erlwood.knime.core.test</module>
-		<module>tests/org.erlwood.knime.webservice.core.test</module>
+		<!-- <module>tests/org.erlwood.knime.core.test</module>
+		<module>tests/org.erlwood.knime.webservice.core.test</module> -->
 	</modules>
 	
 	<profiles>

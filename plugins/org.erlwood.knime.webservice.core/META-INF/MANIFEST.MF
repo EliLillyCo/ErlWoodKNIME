@@ -16,16 +16,11 @@ Bundle-Activator: org.erlwood.knime.WebServiceCoreActivator
 Bundle-ActivationPolicy: lazy
 Eclipse-ExtensibleAPI: true
 Require-Bundle: org.erlwood.knime.core;bundle-version="3.3.1",
- org.knime.core;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.core.net,
- org.eclipse.ui.workbench,
  org.eclipse.ui,
  org.knime.base;bundle-version="[4.0.0,5.0.0)",
- org.apache.commons.codec;bundle-version="1.9.0",
  org.apache.httpcomponents.httpcore;bundle-version="4.4.6",
- org.apache.httpcomponents.httpclient;bundle-version="4.5.3",
- org.apache.httpcomponents.fluent-hc;bundle-version="4.5.3",
- org.apache.httpcomponents.httpclient-cache;bundle-version="4.5.3"
+ org.apache.httpcomponents.httpclient;bundle-version="4.5.3"
 Export-Package: 
  org.erlwood.knime,
  org.erlwood.knime.utils,
