@@ -2,7 +2,7 @@
 <feature
       id="org.erlwood.features.cheminformatics.base"
       label="Erlwood Knime Open Source Cheminformatics"
-      version="4.0.2.qualifier"
+      version="4.4.0.qualifier"
       provider-name="Erlwood"
       plugin="org.erlwood.knime.core">
 
