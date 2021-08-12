@@ -15,12 +15,11 @@
 		
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<lib.directory>${project.basedir}/target/lib</lib.directory>
-		<target.version>44</target.version>
 	</properties>
 
 	<modules>
 		<!-- build modules -->
-		<module>target-platform/${target.version}</module>
+		<module>target-platform</module>
 
 		<!-- plugin modules -->
 		<module>plugins/org.erlwood.knime.core</module>
