@@ -46,6 +46,10 @@ import org.knime.core.node.workflow.CredentialsProvider;
 import org.knime.core.node.workflow.FlowVariable;
 import org.knime.core.node.workflow.ICredentials;
 import org.knime.rest.generic.UsernamePasswordAuthentication;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.PasswordAuthentication;
 /**
  * NTLM Authentication.
  *
@@ -97,6 +101,40 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
     }
 
     /**
+     * As the REST node is not using provided creds that is why this patch as applied for versions after KNIME 4.0(including)
+     */
+    private static void loadCredsToCatch(final Builder request) {
+        try {
+        	Class<?> NTLMAuthenticationProxyClass = Class.forName("sun.net.www.protocol.http.NTLMAuthenticationProxy");
+            for (Field f : NTLMAuthenticationProxyClass.getDeclaredFields()) {
+                if(f.getName().equals("proxy")) {
+                	Field proxyField = f;
+                	proxyField.setAccessible(true);
+                	Class c = proxyField.get(null).getClass();
+                	final Method createMethod = proxyField.get(null).getClass().getDeclaredMethod("create", boolean.class, URL.class, PasswordAuthentication.class);
+                	createMethod.setAccessible(true);
+                	
+                	ClientConfiguration conf = WebClient.getConfig(request);
+    				NTCredentials creds = (NTCredentials) conf.getRequestContext().get(Credentials.class.getName());
+    				PasswordAuthentication pa = new PasswordAuthentication(creds.getUserName(), creds.getPassword().toCharArray());
+    				URL url = new URL(conf.getHttpConduit().getAddress());
+    				try {
+    					url = new URL(url, "/");
+    				}catch(Exception ex) {}
+    				
+    				Object authenticationInfo = createMethod.invoke(proxyField.get(null), false, url, pa);
+    				final Method addToCatchMethod = authenticationInfo.getClass().getSuperclass().getDeclaredMethod("addToCache");
+    				addToCatchMethod.setAccessible(true);
+    	    		addToCatchMethod.invoke(authenticationInfo);
+                }
+            }
+        } catch (Exception ex) {
+            NodeLogger.getLogger(NTLMAuthentication.class)
+                .error(ex.getMessage(), ex);
+        }
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -123,6 +161,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
 
         conf.getHttpConduit().setClient(httpClientPolicy);
 
+        loadCredsToCatch(request);
 
         return request;
     }
