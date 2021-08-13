@@ -105,13 +105,12 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
      */
     private static void loadCredsToCatch(final Builder request) {
         try {
-        	Class<?> NTLMAuthenticationProxyClass = Class.forName("sun.net.www.protocol.http.NTLMAuthenticationProxy");
-            for (Field f : NTLMAuthenticationProxyClass.getDeclaredFields()) {
+        	Class<?> mNTLMAuthenticationProxyClass = Class.forName("sun.net.www.protocol.http.NTLMAuthenticationProxy");
+            for (Field f : mNTLMAuthenticationProxyClass.getDeclaredFields()) {
                 if(f.getName().equals("proxy")) {
                 	Field proxyField = f;
                 	proxyField.setAccessible(true);
-                	Class c = proxyField.get(null).getClass();
-                	final Method createMethod = proxyField.get(null).getClass().getDeclaredMethod("create", boolean.class, URL.class, PasswordAuthentication.class);
+                	final Method createMethod = proxyField.get(null).getClass().getDeclaredMethod("create", boolean.class, URL.class, PasswordAuthentication.class, String.class);
                 	createMethod.setAccessible(true);
                 	
                 	ClientConfiguration conf = WebClient.getConfig(request);
@@ -122,7 +121,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
     					url = new URL(url, "/");
     				}catch(Exception ex) {}
     				
-    				Object authenticationInfo = createMethod.invoke(proxyField.get(null), false, url, pa);
+    				Object authenticationInfo = createMethod.invoke(proxyField.get(null), false, url, pa, "default");
     				final Method addToCatchMethod = authenticationInfo.getClass().getSuperclass().getDeclaredMethod("addToCache");
     				addToCatchMethod.setAccessible(true);
     	    		addToCatchMethod.invoke(authenticationInfo);
