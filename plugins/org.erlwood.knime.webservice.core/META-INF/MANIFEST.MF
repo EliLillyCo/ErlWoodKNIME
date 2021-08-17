@@ -6,7 +6,12 @@ Bundle-Version: 4.4.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: Erlwood
 Bundle-ClassPath: erlwood-wscore.jar,
- target/lib/jaxws-rt.jar,
+ target/lib/jakarta.activation-api.jar,
+ target/lib/jakarta.jws-api.jar,
+ target/lib/jakarta.xml.bind-api.jar,
+ target/lib/jakarta.xml.soap-api.jar,
+ target/lib/jakarta.xml.ws-api.jar,
+ target/lib/saaj-impl.jar,
  target/lib/commons-logging.jar,
  target/lib/httpmime.jar,
  target/lib/httpclient-win.jar,
@@ -30,4 +35,5 @@ Export-Package:
  org.erlwood.knime.utils.gui,
  org.erlwood.knime.utils.node,
  org.erlwood.knime.utils.settings,
- org.erlwood.knime.utils.settings.ui
+ org.erlwood.knime.utils.settings.ui,
+ com.sun.xml.internal.messaging.saaj.soap
