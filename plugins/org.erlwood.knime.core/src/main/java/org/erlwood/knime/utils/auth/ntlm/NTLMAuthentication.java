@@ -195,7 +195,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         }else {
         	int i = username.indexOf("\\");
         	if(i == -1) {
-        		throw new IllegalStateException("Username incorrect format. Expected username format is <DOMAIN>\\<USERNAME> !");
+        		username = "\\" + username;	// Set an empty domain
         	}
         }
         return new NTCredentials(username, password, HOST, "");
