@@ -56,7 +56,7 @@
 	</extension>
 
 	<extension point="org.knime.rest.authentication">
-      <AuthenticateEachRequest class="org.erlwood.knime.utils.auth.ntlm.NTLMAuthentication" deprecated="false" name="NTLM(Erlwood)">
+      <AuthenticateEachRequest class="org.erlwood.knime.utils.auth.ntlm.NTLMAuthentication" deprecated="false" name="NTLM (Erlwood)">
       </AuthenticateEachRequest>
    </extension>	
 
