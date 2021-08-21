@@ -210,6 +210,9 @@
 										<goals>
 											<goal>compile</goal>
 										</goals>
+										<configuration>
+      										<useProjectSettings>false</useProjectSettings>
+   										</configuration>
 									</pluginExecutionFilter>
 									<action>
 										<ignore></ignore>
