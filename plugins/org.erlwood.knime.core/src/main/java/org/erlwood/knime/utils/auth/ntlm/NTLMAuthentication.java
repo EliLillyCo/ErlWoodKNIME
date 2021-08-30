@@ -20,7 +20,11 @@
 */
 package org.erlwood.knime.utils.auth.ntlm;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.InetAddress;
+import java.net.PasswordAuthentication;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +86,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         } catch(Exception ex) {
             // Do nothing
         	LOG.error(ex.getMessage(), ex);
-        }    
+        }
     }
 
     /**
@@ -96,6 +100,37 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         bus.setExtension(NTLMConduitInitiatorManager.getInstance(), ConduitInitiatorManager.class);
     }
 
+    public void loadCredsToCache(final Builder request) {
+    	try {
+    		Class<?> NTLMAuthenticationProxyClass = Class.forName("sun.net.www.protocol.http.NTLMAuthenticationProxy");
+    		for (Field f : NTLMAuthenticationProxyClass.getDeclaredFields()) {
+    			if(f.getName().equals("proxy")) {
+    				Field proxyField = f;
+    				proxyField.setAccessible(true);
+    				Class c = proxyField.get(null).getClass();
+    				final Method createMethod = proxyField.get(null).getClass().getDeclaredMethod("create", boolean.class, URL.class, PasswordAuthentication.class);
+    				createMethod.setAccessible(true);
+
+    				ClientConfiguration conf = WebClient.getConfig(request);
+    				NTCredentials creds = (NTCredentials) conf.getRequestContext().get(Credentials.class.getName());
+    				PasswordAuthentication pa = new PasswordAuthentication(creds.getUserName(), creds.getPassword().toCharArray());
+    				URL url = new URL(conf.getHttpConduit().getAddress());
+    				try {
+    					url = new URL(url, "/");
+    				}catch(Exception ex) {}
+
+    				Object authenticationInfo = createMethod.invoke(proxyField.get(null), false, url, pa);
+    				final Method addToCatchMethod = authenticationInfo.getClass().getSuperclass().getDeclaredMethod("addToCache");
+    				addToCatchMethod.setAccessible(true);
+    				addToCatchMethod.invoke(authenticationInfo);
+    			}
+    		}
+    	} catch (Exception ex) {
+    		NodeLogger.getLogger(NTLMAuthentication.class)
+    		.error(ex.getMessage(), ex);
+    	}
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -104,7 +139,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         final Map<String, FlowVariable> flowVariables) {
         NTLMConduitInitiatorManager.getInstance().configureForNTLM(request);
         ClientConfiguration conf = WebClient.getConfig(request);
-     
+        
         //	Set any custom headers       
 		for (IHeaderSupplier hs : HEADER_SUPPLIERS) {
 	        for (Entry<String, Object> es : hs.getHeaders().entrySet()) {
@@ -122,7 +157,8 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         httpClientPolicy.setMaxRetransmits(1);
 
         conf.getHttpConduit().setClient(httpClientPolicy);
-
+        
+        loadCredsToCache(request);
 
         return request;
     }
@@ -156,6 +192,11 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
         //	Check username & password
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
         	throw new IllegalStateException("Username or Password cannot be blank !");
+        }else {
+        	int i = username.indexOf("\\");
+        	if(i == -1) {
+        		username = "\\" + username;	// Set an empty domain
+        	}
         }
         return new NTCredentials(username, password, HOST, "");
     }
