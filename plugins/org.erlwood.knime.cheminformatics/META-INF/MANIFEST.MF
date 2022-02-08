@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Cheminformatics
 Bundle-SymbolicName: org.erlwood.knime.cheminformatics;singleton:=true
-Bundle-Version: 4.4.2.qualifier
+Bundle-Version: 4.5.1.qualifier
 Bundle-Vendor: Erlwood
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.knime.base;bundle-version="[4.0.0,5.0.0)",

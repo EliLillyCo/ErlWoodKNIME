@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.erlwood.knime</groupId>
 		<artifactId>erlwood-knime</artifactId>
-		<version>4.4.2-SNAPSHOT</version>
+		<version>4.5.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>erlwood-update-site</artifactId>
 	<packaging>eclipse-update-site</packaging>
