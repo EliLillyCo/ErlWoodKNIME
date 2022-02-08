@@ -9,15 +9,15 @@
             <unit id="org.knime.features.testing.application.feature.group" version="0.0.0"/>
             <unit id="org.knime.features.distmatrix.feature.group" version="0.0.0" />
             <unit id="org.knime.features.ext.poi.feature.group" version="0.0.0"/>
-            <repository location="http://update.knime.com/analytics-platform/4.4"/>
+            <repository location="http://update.knime.com/analytics-platform/4.5"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <unit id="org.rdkit.knime.feature.feature.group" version="0.0.0"/>
-            <repository location="http://update.knime.com/community-contributions/trusted/4.4"/>
+            <repository location="http://update.knime.com/community-contributions/trusted/4.5"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <unit id="jp.co.infocom.cheminfo.marvin.feature.feature.group" version="0.0.0" />
-            <repository location="http://update.knime.com/partner/4.4"/>
+            <repository location="http://update.knime.com/partner/4.5"/>
         </location>
     </locations>
     <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
