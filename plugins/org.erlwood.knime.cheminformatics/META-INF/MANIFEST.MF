@@ -16,9 +16,9 @@ Require-Bundle: org.knime.base;bundle-version="[4.0.0,5.0.0)",
  org.rdkit.knime.nodes;bundle-version="[2.4.0,5.0.0)",
  org.rdkit.knime.types;bundle-version="[2.4.0,5.0.0)",
  org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
- org.erlwood.knime.core;bundle-version="3.3.1",
+ org.erlwood.knime.core;bundle-version="[4.0.0,5.0.0)",
  org.knime.json;bundle-version="[4.0.0,5.0.0)",
- org.erlwood.knime.webservice.core;bundle-version="3.3.1"
+ org.erlwood.knime.webservice.core;bundle-version="[4.4.0,5.0.0)"
 Export-Package: org.erlwood.knime,
  org.erlwood.knime.datatypes.converters,
  org.erlwood.knime.nodes.annotatemolecules,
