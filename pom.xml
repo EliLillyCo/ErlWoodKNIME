@@ -206,7 +206,7 @@
 											tycho-compiler-plugin
 										</artifactId>
 										<versionRange>
-											[1.4.0,)
+											[${tycho.version},)
 										</versionRange>
 										<goals>
 											<goal>compile</goal>
