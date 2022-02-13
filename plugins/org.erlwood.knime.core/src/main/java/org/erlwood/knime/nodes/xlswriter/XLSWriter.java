@@ -96,6 +96,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.IndexedColorMap;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -237,16 +238,17 @@ public class XLSWriter {
 	}
 	
 	private void setXSSFColors(XSSFWorkbook wb) {
- 
-      ((XSSFCellStyle)red).setFillForegroundColor(new XSSFColor(new Color(255, 170, 170)));
+	  IndexedColorMap colorMap = wb.getStylesSource().getIndexedColors();
+	  
+      ((XSSFCellStyle)red).setFillForegroundColor(new XSSFColor(new Color(255, 170, 170), colorMap));
                
-      ((XSSFCellStyle)yellow).setFillForegroundColor(new XSSFColor(Color.YELLOW));
+      ((XSSFCellStyle)yellow).setFillForegroundColor(new XSSFColor(Color.YELLOW, colorMap));
       
-      ((XSSFCellStyle)green).setFillForegroundColor(new XSSFColor(new Color(204, 255, 204)));
+      ((XSSFCellStyle)green).setFillForegroundColor(new XSSFColor(new Color(204, 255, 204), colorMap));
       
-      ((XSSFCellStyle)blue).setFillForegroundColor(new XSSFColor(new Color(135, 206, 250)));
+      ((XSSFCellStyle)blue).setFillForegroundColor(new XSSFColor(new Color(135, 206, 250), colorMap));
   
-      ((XSSFCellStyle)white).setFillForegroundColor(new XSSFColor(Color.WHITE));
+      ((XSSFCellStyle)white).setFillForegroundColor(new XSSFColor(Color.WHITE, colorMap));
     }
 	
 	private Workbook creatWorkbook() {

@@ -29,7 +29,7 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.0</version>
-			<exclusions>
+			<!-- <exclusions>
 				<exclusion>
 					<groupId>xml-apis</groupId>
 					<artifactId>xml-apis</artifactId>
@@ -38,7 +38,7 @@
 					<groupId>org.apache.xmlbeans</groupId>
 					<artifactId>xmlbeans</artifactId>
 				</exclusion>
-			</exclusions>
+			</exclusions> -->
 		</dependency>
 		
 	</dependencies>

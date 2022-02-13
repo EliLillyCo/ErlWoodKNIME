@@ -72,7 +72,8 @@ Bundle-ClassPath: erlwood-core.jar,
  target/lib/slf4j-api.jar,
  target/lib/smbj.jar,
  target/lib/smbjwrapper.jar,
- target/lib/SparseBitSet.jar
+ target/lib/SparseBitSet.jar,
+ target/lib/xmlbeans.jar
 Bundle-Activator: org.erlwood.knime.CoreActivator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.cxf.transport.http;version="[3.0.7,4.0.0)",
