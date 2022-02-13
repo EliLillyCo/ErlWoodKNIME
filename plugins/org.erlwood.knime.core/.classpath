@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="target/lib/bcprov-jdk15on.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/commons-codec.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/dom4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/commons-collections4.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/commons-compress.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/commons-io.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/commons-math3.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/curvesapi.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jcifs.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/log4j-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/mbassador.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/poi.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/poi-ooxml.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/poi-ooxml-lite.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/slf4j-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/smbj.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/smbjwrapper.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/SparseBitSet.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/jcifs.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/smbjwrapper.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/smbj.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/slf4j-api.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/mbassador.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/bcprov-jdk15on.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

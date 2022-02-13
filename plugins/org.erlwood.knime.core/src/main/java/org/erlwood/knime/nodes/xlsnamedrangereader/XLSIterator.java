@@ -59,6 +59,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -359,9 +360,9 @@ class XLSIterator extends CloseableRowIterator {
         }
         // determine the type
         switch (cell.getCellType()) {
-        case Cell.CELL_TYPE_BLANK:
+        case BLANK:
             return DataType.getMissingCell();
-        case Cell.CELL_TYPE_BOOLEAN:
+        case BOOLEAN:
             boolean b = cell.getBooleanCellValue();
             if (expectedType.isCompatible(StringValue.class)) {
                 return new StringCell(Boolean.toString(b));
@@ -371,7 +372,7 @@ class XLSIterator extends CloseableRowIterator {
                                 + ", sheet '" + m_settings.getSheetName(m_workBook)
                                 + "', row " + cell.getRowIndex());
             }
-        case Cell.CELL_TYPE_ERROR:
+        case ERROR:
             if (m_settings.getUseErrorPattern()) {
                 if (expectedType.isCompatible(StringValue.class)) {
                     return new StringCell(m_settings.getErrorPattern());
@@ -385,19 +386,19 @@ class XLSIterator extends CloseableRowIterator {
             } else {
                 return DataType.getMissingCell();
             }
-        case Cell.CELL_TYPE_FORMULA:
+        case FORMULA:
         	System.out.println("hello");
             switch(cell.getCachedFormulaResultType()) {
-            case Cell.CELL_TYPE_BLANK:
+            case BLANK:
             	return DataType.getMissingCell();
-            case Cell.CELL_TYPE_BOOLEAN:
+            case BOOLEAN:
                 boolean bool = cell.getBooleanCellValue();
                 if (expectedType.isCompatible(StringValue.class)) {
                    return new StringCell(Boolean.toString(bool));
                 }
-            case Cell.CELL_TYPE_ERROR:
+            case ERROR:
             	return new StringCell(m_settings.getErrorPattern());
-            case Cell.CELL_TYPE_NUMERIC:
+            case NUMERIC:
                 if (expectedType.isCompatible(DateAndTimeValue.class)) {
                     if (DateUtil.isCellDateFormatted(cell)) {
                         Date date = cell.getDateCellValue();
@@ -438,10 +439,10 @@ class XLSIterator extends CloseableRowIterator {
                                     + ", sheet '" + m_settings.getSheetName(m_workBook)
                                     + "', row " + cell.getRowIndex());
                 }
-            case Cell.CELL_TYPE_STRING:
+            case STRING:
                 return new StringCell(cell.getRichStringCellValue().toString());        	
         }
-        case Cell.CELL_TYPE_NUMERIC:
+        case NUMERIC:
             if (expectedType.isCompatible(DateAndTimeValue.class)) {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     Date date = cell.getDateCellValue();
@@ -482,7 +483,7 @@ class XLSIterator extends CloseableRowIterator {
                                 + ", sheet '" + m_settings.getSheetName(m_workBook)
                                 + "', row " + cell.getRowIndex());
             }
-        case Cell.CELL_TYPE_STRING:
+        case STRING:
             if (expectedType.isCompatible(StringValue.class)) {
                 String s = cell.getRichStringCellValue().getString();
                 if (s == null || s.equals(m_settings.getMissValuePattern())) {

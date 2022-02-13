@@ -88,7 +88,9 @@ import org.apache.commons.lang.WordUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -180,11 +182,11 @@ public class XLSWriter {
         blue = wb.createCellStyle();
         white = wb.createCellStyle();
        
-        red.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        yellow.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        green.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        blue.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        white.setFillPattern(CellStyle.SOLID_FOREGROUND);
+        red.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        yellow.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        green.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        blue.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        white.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         
         
             setHSSFColors((HSSFWorkbook) wb);
@@ -198,11 +200,11 @@ public class XLSWriter {
         blue = wb.createCellStyle();
         white = wb.createCellStyle();
        
-        red.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        yellow.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        green.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        blue.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        white.setFillPattern(CellStyle.SOLID_FOREGROUND);
+        red.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        yellow.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        green.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        blue.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        white.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         
        
         setXSSFColors((XSSFWorkbook) wb);
@@ -216,10 +218,10 @@ public class XLSWriter {
       red.setFillForegroundColor((short) 41);
       
           
-      yellow.setFillForegroundColor(HSSFColor.YELLOW.index);
+      yellow.setFillForegroundColor(HSSFColor.HSSFColorPredefined.YELLOW.getIndex());
       
   
-      green.setFillForegroundColor(HSSFColor.LIGHT_GREEN.index);
+      green.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_GREEN.getIndex());
       
       
       
@@ -231,7 +233,7 @@ public class XLSWriter {
       
       
       
-      white.setFillForegroundColor(HSSFColor.WHITE.index);
+      white.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 	}
 	
 	private void setXSSFColors(XSSFWorkbook wb) {
@@ -442,13 +444,13 @@ public class XLSWriter {
 							short col = mapColor(
 									h.get(inSpec.getColumnSpec(c).getName()),
 									val);
-							if (col == HSSFColor.RED.index) {
+							if (col == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 								sheetCell.setCellStyle(red);
 							}
-							if (col == HSSFColor.YELLOW.index) {
+							if (col == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 								sheetCell.setCellStyle(yellow);
 							}
-							if (col == HSSFColor.GREEN.index) {
+							if (col == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 								sheetCell.setCellStyle(green);
 							}
 
@@ -463,19 +465,19 @@ public class XLSWriter {
 							short col = mapColor(
 									s.get(inSpec.getColumnSpec(c).getName()),
 									val);
-							if (col == HSSFColor.RED.index) {
+							if (col == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 								sheetCell.setCellStyle(red);
 							}
-							if (col == HSSFColor.YELLOW.index) {
+							if (col == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 								sheetCell.setCellStyle(yellow);
 							}
-							if (col == HSSFColor.GREEN.index) {
+							if (col == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 								sheetCell.setCellStyle(green);
 							}
-							if (col == HSSFColor.BLUE.index) {
+							if (col == HSSFColor.HSSFColorPredefined.BLUE.getIndex()) {
 								sheetCell.setCellStyle(blue);
 							}
-							if (col == HSSFColor.WHITE.index) {
+							if (col == HSSFColor.HSSFColorPredefined.WHITE.getIndex()) {
 								sheetCell.setCellStyle(white);
 							}
 
@@ -642,13 +644,13 @@ public class XLSWriter {
 							short col = mapColor(
 									h.get(inSpec.getColumnSpec(c).getName()),
 									val);
-							if (col == HSSFColor.RED.index) {
+							if (col == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 								sheetCell.setCellStyle(red);
 							}
-							if (col == HSSFColor.YELLOW.index) {
+							if (col == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 								sheetCell.setCellStyle(yellow);
 							}
-							if (col == HSSFColor.GREEN.index) {
+							if (col == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 								sheetCell.setCellStyle(green);
 							}
 
@@ -663,19 +665,19 @@ public class XLSWriter {
 							short col = mapColor(
 									s.get(inSpec.getColumnSpec(c).getName()),
 									val);
-							if (col == HSSFColor.RED.index) {
+							if (col == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 								sheetCell.setCellStyle(red);
 							}
-							if (col == HSSFColor.YELLOW.index) {
+							if (col == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 								sheetCell.setCellStyle(yellow);
 							}
-							if (col == HSSFColor.GREEN.index) {
+							if (col == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 								sheetCell.setCellStyle(green);
 							}
-							if (col == HSSFColor.BLUE.index) {
+							if (col == HSSFColor.HSSFColorPredefined.BLUE.getIndex()) {
 								sheetCell.setCellStyle(blue);
 							}
-							if (col == HSSFColor.WHITE.index) {
+							if (col == HSSFColor.HSSFColorPredefined.WHITE.getIndex()) {
 								sheetCell.setCellStyle(white);
 							}
 
@@ -700,13 +702,13 @@ public class XLSWriter {
 			for (int r = 0; r < effRow; r++) {
 				Cell sheetCell = sheetRow.createCell(r);
 				sheetCell.setCellStyle(cells[r][c].getCellStyle());
-				int t = cells[r][c].getCellType();
+				CellType t = cells[r][c].getCellType();
 				sheetCell.setCellType(t);
 				switch (t) {
-				case Cell.CELL_TYPE_STRING:
+				case STRING:
 					sheetCell.setCellValue(cells[r][c].getStringCellValue());
 					break;
-				case Cell.CELL_TYPE_NUMERIC:
+				case NUMERIC:
 					sheetCell.setCellValue(cells[r][c].getNumericCellValue());
 					break;
 				default:
@@ -733,20 +735,20 @@ public class XLSWriter {
 	private short mapColor(DoubleColumnSettings c, double d) {
 		if (c.isInverted()) {
 			if (d <= c.getLowerBound()) {
-				return HSSFColor.RED.index;
+				return HSSFColor.HSSFColorPredefined.RED.getIndex();
 			}
 			if (d <= c.getUpperBound()) {
-				return HSSFColor.YELLOW.index;
+				return HSSFColor.HSSFColorPredefined.YELLOW.getIndex();
 			}
-			return HSSFColor.GREEN.index;
+			return HSSFColor.HSSFColorPredefined.GREEN.getIndex();
 		} else {
 			if (d <= c.getLowerBound()) {
-				return HSSFColor.GREEN.index;
+				return HSSFColor.HSSFColorPredefined.GREEN.getIndex();
 			}
 			if (d <= c.getUpperBound()) {
-				return HSSFColor.YELLOW.index;
+				return HSSFColor.HSSFColorPredefined.YELLOW.getIndex();
 			}
-			return HSSFColor.RED.index;
+			return HSSFColor.HSSFColorPredefined.RED.getIndex();
 		}
 
 	}

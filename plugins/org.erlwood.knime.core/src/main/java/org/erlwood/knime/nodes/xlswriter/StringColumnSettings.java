@@ -71,13 +71,13 @@ public class StringColumnSettings {
 	private String mQuery3;
 
 	private SettingsModelInteger mCol1 = new SettingsModelInteger(CFG_COL1,
-			HSSFColor.WHITE.index);
+			HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 	private SettingsModelInteger mCol2 = new SettingsModelInteger(CFG_COL2,
-			HSSFColor.WHITE.index);
+			HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 	private SettingsModelInteger mCol3 = new SettingsModelInteger(CFG_COL3,
-			HSSFColor.WHITE.index);
+			HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 	private SettingsModelInteger dCol = new SettingsModelInteger(CFG_DCOL,
-			HSSFColor.WHITE.index);
+			HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 
 	private boolean colourable = false;
 	private boolean set = false;
@@ -199,15 +199,15 @@ public class StringColumnSettings {
 			} catch (Exception e) {
 
 				if (invert) {
-					mCol1.setIntValue(HSSFColor.RED.index);
-					mCol2.setIntValue(HSSFColor.WHITE.index);
-					mCol3.setIntValue(HSSFColor.WHITE.index);
-					dCol.setIntValue(HSSFColor.WHITE.index);
+					mCol1.setIntValue(HSSFColor.HSSFColorPredefined.RED.getIndex());
+					mCol2.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+					mCol3.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+					dCol.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 				} else {
-					mCol1.setIntValue(HSSFColor.GREEN.index);
-					mCol2.setIntValue(HSSFColor.WHITE.index);
-					mCol3.setIntValue(HSSFColor.WHITE.index);
-					dCol.setIntValue(HSSFColor.WHITE.index);
+					mCol1.setIntValue(HSSFColor.HSSFColorPredefined.GREEN.getIndex());
+					mCol2.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+					mCol3.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+					dCol.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 				}
 			}
 
@@ -274,13 +274,13 @@ public class StringColumnSettings {
 			mQuery3 = "";
 		}
 		if (mQuery.isEmpty()) {
-			mCol1.setIntValue(HSSFColor.WHITE.index);
+			mCol1.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 		}
 		if (mQuery2.isEmpty()) {
-			mCol2.setIntValue(HSSFColor.WHITE.index);
+			mCol2.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 		}
 		if (mQuery3.isEmpty()) {
-			mCol3.setIntValue(HSSFColor.WHITE.index);
+			mCol3.setIntValue(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
 		}
 		mCol1.saveSettingsTo(settings);
 		mCol2.saveSettingsTo(settings);
@@ -293,19 +293,19 @@ public class StringColumnSettings {
 	void setColorX(int i, Color c) {
 		int cc = -1;
 		if (c == Color.white) {
-			cc = HSSFColor.WHITE.index;
+			cc = HSSFColor.HSSFColorPredefined.WHITE.getIndex();
 		}
 		if (c == Color.red) {
-			cc = HSSFColor.RED.index;
+			cc = HSSFColor.HSSFColorPredefined.RED.getIndex();
 		}
 		if (c == Color.green) {
-			cc = HSSFColor.GREEN.index;
+			cc = HSSFColor.HSSFColorPredefined.GREEN.getIndex();
 		}
 		if (c == Color.blue) {
-			cc = HSSFColor.BLUE.index;
+			cc = HSSFColor.HSSFColorPredefined.BLUE.getIndex();
 		}
 		if (c == Color.yellow) {
-			cc = HSSFColor.YELLOW.index;
+			cc = HSSFColor.HSSFColorPredefined.YELLOW.getIndex();
 		}
 
 		switch (i) {
@@ -343,19 +343,19 @@ public class StringColumnSettings {
 
 	// white = 0, red =1, yellow =2, green =3, blue =4
 	public int getColorIndex(int x) {
-		if (x == HSSFColor.WHITE.index) {
+		if (x == HSSFColor.HSSFColorPredefined.WHITE.getIndex()) {
 			return 0;
 		}
-		if (x == HSSFColor.RED.index) {
+		if (x == HSSFColor.HSSFColorPredefined.RED.getIndex()) {
 			return 1;
 		}
-		if (x == HSSFColor.YELLOW.index) {
+		if (x == HSSFColor.HSSFColorPredefined.YELLOW.getIndex()) {
 			return 2;
 		}
-		if (x == HSSFColor.GREEN.index) {
+		if (x == HSSFColor.HSSFColorPredefined.GREEN.getIndex()) {
 			return 3;
 		}
-		if (x == HSSFColor.BLUE.index) {
+		if (x == HSSFColor.HSSFColorPredefined.BLUE.getIndex()) {
 			return 4;
 		}
 		return 0;
