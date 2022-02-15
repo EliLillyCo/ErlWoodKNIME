@@ -59,3 +59,4 @@ Export-Package:
  org.erlwood.knime.utils.node,
  org.erlwood.knime.utils.settings,
  org.erlwood.knime.utils.settings.ui
+Automatic-Module-Name: org.erlwood.knime.webservice.core

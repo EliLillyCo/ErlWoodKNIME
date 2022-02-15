@@ -86,3 +86,4 @@ Bundle-ClassPath: erlwood-cheminformatics.jar,
 Bundle-Activator: org.erlwood.knime.CheminformaticsActivator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.internal.browser
+Automatic-Module-Name: org.erlwood.knime.cheminformatics
