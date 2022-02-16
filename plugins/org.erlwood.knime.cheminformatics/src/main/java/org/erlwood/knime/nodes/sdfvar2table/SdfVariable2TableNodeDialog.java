@@ -50,7 +50,7 @@ public class SdfVariable2TableNodeDialog extends DefaultNodeSettingsPane
     	super();
     	    	       
     	flowVariables = new DialogComponentFlowVariableNameSelection(mVariableName, "Variable Name", 
-    			getAvailableFlowVariables().values(), false, FlowVariable.Type.STRING);
+    			getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE).values(), false, FlowVariable.Type.STRING);
     	
     	DialogComponentBoolean aromatize = new DialogComponentBoolean(mAromatize, "Aromatize structures");
     	DialogComponentBoolean split = new DialogComponentBoolean(mSplit, "Split multiple structures");

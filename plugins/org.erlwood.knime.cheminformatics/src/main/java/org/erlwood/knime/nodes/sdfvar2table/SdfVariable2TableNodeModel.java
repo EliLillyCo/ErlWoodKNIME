@@ -99,7 +99,7 @@ public class SdfVariable2TableNodeModel extends NodeModel {
 		BufferedDataContainer molContainer = exec.createDataContainer(MOL_SPEC);
 		BufferedDataContainer rxnContainer = exec.createDataContainer(RXN_SPEC);
 		 
-		FlowVariable fv = getAvailableFlowVariables().get(mVariableName.getStringValue());
+		FlowVariable fv = getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE).get(mVariableName.getStringValue());
 		
 		if (fv == null) {
 			throw new IllegalStateException("Flow variable name '" + mVariableName.getStringValue() + "' is missing !");

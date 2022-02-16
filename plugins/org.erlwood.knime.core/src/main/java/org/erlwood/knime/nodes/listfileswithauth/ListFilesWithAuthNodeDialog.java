@@ -399,7 +399,7 @@ public final class ListFilesWithAuthNodeDialog extends NodeDialogPane implements
 		// get the authentication credentials if there are any
 		authentication.saveSettingsTo(set);
 		
-		AuthenticationContext creds = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(), getCredentialsProvider(), set.getCredentialsName());
+		AuthenticationContext creds = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), getCredentialsProvider(), set.getCredentialsName());
 		SharedConnection con = null;
 
 		String[] files = location.split(";");

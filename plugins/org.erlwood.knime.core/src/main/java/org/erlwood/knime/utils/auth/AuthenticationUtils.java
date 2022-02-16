@@ -140,12 +140,12 @@ public final class AuthenticationUtils {
 
 	public static NtlmPasswordAuthentication getCredentials(NodeModel nm,
 			final CredentialsProvider provider) {
-		return getCredentials(nm.getAvailableFlowVariables(), provider);
+		return getCredentials(nm.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider);
 	}
 
 	public static NtlmPasswordAuthentication getCredentials(final NodeDialogPane ndp,
 			final CredentialsProvider provider) {
-		return getCredentials(ndp.getAvailableFlowVariables(), provider);
+		return getCredentials(ndp.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider);
 	}
 
 	/**
@@ -161,7 +161,7 @@ public final class AuthenticationUtils {
 		if (nm == null || provider == null) {
 			return null;
 		}
-		return getNTLMAuth(nm.getAvailableFlowVariables(), provider);
+		return getNTLMAuth(nm.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider);
 	}
 	
 	/**
@@ -179,7 +179,7 @@ public final class AuthenticationUtils {
 		if (nm == null || provider == null) {
 			return null;
 		}
-		return getNTLMAuth(nm.getAvailableFlowVariables(), provider, credentialsName);
+		return getNTLMAuth(nm.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider, credentialsName);
 	}
 
 	/**
@@ -196,7 +196,7 @@ public final class AuthenticationUtils {
 		if (ndp == null || provider == null) {
 			return null;
 		}
-		return getNTLMAuth(ndp.getAvailableFlowVariables(), provider);
+		return getNTLMAuth(ndp.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider);
 	}
 	
 	/**
@@ -215,7 +215,7 @@ public final class AuthenticationUtils {
 		if (ndp == null || provider == null) {
 			return null;
 		}
-		return getNTLMAuth(ndp.getAvailableFlowVariables(), provider, credentialsName);
+		return getNTLMAuth(ndp.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), provider, credentialsName);
 	}
 
 	/**

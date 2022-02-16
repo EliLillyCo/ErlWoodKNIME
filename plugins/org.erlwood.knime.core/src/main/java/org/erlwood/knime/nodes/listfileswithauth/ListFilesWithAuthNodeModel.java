@@ -116,7 +116,7 @@ public class ListFilesWithAuthNodeModel extends NodeModel {
 			final ExecutionContext exec) throws Exception {
 
 		AuthenticationContext creds = AuthenticationUtils.getAuthenticationContext(
-				this.getAvailableFlowVariables(),
+				this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE),
 				getCredentialsProvider( ),
 				mSettings.getCredentialsName( )
 		);
@@ -147,7 +147,7 @@ public class ListFilesWithAuthNodeModel extends NodeModel {
 				mSettings.getCredentialsName( )
 		);
 		
-		AuthenticationContext creds = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(),
+		AuthenticationContext creds = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE),
 				getCredentialsProvider(), mSettings.getCredentialsName( ));
 		if (mSettings == null) {
 			throw new InvalidSettingsException("No configuration available.");
