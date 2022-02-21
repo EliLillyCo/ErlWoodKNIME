@@ -21,12 +21,14 @@
 package org.erlwood.knime.nodes.uploadfileswithauth;
 
 import java.io.BufferedInputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,6 +56,7 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.port.PortType;
 import org.knime.core.node.workflow.FlowVariable;
+import org.knime.core.util.pathresolve.ResolverUtil;
 
 import com.hierynomus.smbj.auth.AuthenticationContext;
 
@@ -304,7 +307,14 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
      * @return The path on the network share to the copied file/directory.
      */
     private String upload(final String path, final String share) throws Exception {
-        File file = new File(path);
+    	
+    	File file = new File(path);
+
+    	if (path.toLowerCase().startsWith("knime:")) {
+    		file = new File(ResolverUtil
+					.resolveURItoLocalFile(new URI(path)).toURI());
+		}
+
         String outPath = SambaUtility.makeURL(share, false);
 
         // check if the file exists
