@@ -78,15 +78,14 @@ Bundle-Activator: org.erlwood.knime.CoreActivator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.cxf.transport.http;version="[3.0.7,4.0.0)",
  org.apache.cxf.transports.http.configuration;version="[3.0.7,4.0.0)",
+ org.apache.poi.ss.util,
+ org.apache.poi.ss.usermodel,
+ org.apache.poi.ss.extractor,
+ org.apache.poi.ss.format,
+ org.apache.poi.ss.formula,
+ org.apache.poi.poifs.filesystem,
  org.apache.poi.xssf.usermodel,
  org.apache.poi.xssf.model,
  org.apache.poi.hssf.usermodel,
- org.apache.poi.hssf.model,
- org.apache.poi.poifs.filesystem,
- org.apache.poi.ss.extractor,
- org.apache.poi.ss.format,
- org.apache.poi.ss.formula.atp,
- org.apache.poi.ss.formula,
- org.apache.poi.ss.usermodel,
- org.apache.poi.ss.util
+ org.apache.poi.hssf.model
 Automatic-Module-Name: org.erlwood.knime.core
