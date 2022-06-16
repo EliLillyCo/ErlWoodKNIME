@@ -83,5 +83,10 @@ Import-Package: org.apache.cxf.transport.http;version="[3.0.7,4.0.0)",
  org.apache.poi.hssf.usermodel,
  org.apache.poi.hssf.model,
  org.apache.poi.poifs.filesystem,
- org.apache.poi.ss.usermodel
+ org.apache.poi.ss.extractor,
+ org.apache.poi.ss.format,
+ org.apache.poi.ss.formula.atp,
+ org.apache.poi.ss.formula,
+ org.apache.poi.ss.usermodel,
+ org.apache.poi.ss.util
 Automatic-Module-Name: org.erlwood.knime.core
