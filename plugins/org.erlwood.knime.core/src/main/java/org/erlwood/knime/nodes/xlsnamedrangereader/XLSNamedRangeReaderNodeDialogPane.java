@@ -92,7 +92,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
-import org.apache.poi.hssf.util.AreaReference;
+import org.apache.poi.ss.util.AreaReference;
+import org.apache.poi.ss.SpreadsheetVersion;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Name;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -1214,7 +1215,7 @@ public class XLSNamedRangeReaderNodeDialogPane extends NodeDialogPane {
             throw new InvalidSettingsException("Please select a named range.");
         }
         Name aNamedCell = m_workbook.getName(input);
-        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula());
+        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula(),SpreadsheetVersion.EXCEL2007);
         CellReference[] crefs = aref.getAllReferencedCells();
         int r = crefs[0].getRow();
         return r;
@@ -1226,7 +1227,7 @@ public class XLSNamedRangeReaderNodeDialogPane extends NodeDialogPane {
             throw new InvalidSettingsException("Please select a named range.");
         }
         Name aNamedCell = m_workbook.getName(input);
-        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula());
+        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula(),SpreadsheetVersion.EXCEL2007);
         CellReference[] crefs = aref.getAllReferencedCells();
         int r = crefs[crefs.length - 1].getRow();
         return r;
@@ -1270,7 +1271,7 @@ public class XLSNamedRangeReaderNodeDialogPane extends NodeDialogPane {
             throw new InvalidSettingsException("Please select a named range.");
         }
         Name aNamedCell = m_workbook.getName(input);
-        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula());
+        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula(),SpreadsheetVersion.EXCEL2007);
         CellReference[] crefs = aref.getAllReferencedCells();
         int c = crefs[0].getCol();
         return c;
@@ -1282,7 +1283,7 @@ public class XLSNamedRangeReaderNodeDialogPane extends NodeDialogPane {
             throw new InvalidSettingsException("Please select a named range.");
         }
         Name aNamedCell = m_workbook.getName(input);
-        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula());
+        AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula(),SpreadsheetVersion.EXCEL2007);
         CellReference[] crefs = aref.getAllReferencedCells();
         int c = crefs[crefs.length - 1].getCol();
         return c;

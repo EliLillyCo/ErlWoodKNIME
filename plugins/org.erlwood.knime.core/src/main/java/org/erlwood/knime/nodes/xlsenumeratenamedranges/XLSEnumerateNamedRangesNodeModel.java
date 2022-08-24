@@ -68,6 +68,7 @@ import org.apache.poi.ss.usermodel.Name;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.AreaReference;
+import org.apache.poi.ss.SpreadsheetVersion;
 import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.RowKey;
@@ -209,9 +210,8 @@ public class XLSEnumerateNamedRangesNodeModel extends NodeModel {
         Map<String, Set<String>> namedRanges = new TreeMap<String, Set<String>>();
         
         try {
-        	for (int i = 0; i <wb.getNumberOfNames(); i++) {
-        		Name namedRange = wb.getNameAt(i);
-        		String name = wb.getNameAt(i).getNameName();
+            for(Name namedRange : wb.getAllNames()) {
+        		String name = namedRange.getNameName();
         		if (name.contains("Print_Area") || name.contains("PrintArea")) {
         			continue;
         		}
@@ -221,7 +221,7 @@ public class XLSEnumerateNamedRangesNodeModel extends NodeModel {
         		//	Test for a cell based name
         		try {
         			namedRange.getSheetName();        			
-        			AreaReference.generateContiguous(namedRange.getRefersToFormula());
+        			AreaReference.generateContiguous(SpreadsheetVersion.EXCEL2007,namedRange.getRefersToFormula());
         		} catch(IllegalArgumentException iax) {
         			continue;
         		} catch(IllegalStateException isx) {
@@ -232,13 +232,13 @@ public class XLSEnumerateNamedRangesNodeModel extends NodeModel {
     				sheetName = namedRange.getSheetName();
     				addNamedRange(namedRanges, sheetName, name);    				    			
     			} else {
-    				refs = AreaReference.generateContiguous(name);
+    				refs = AreaReference.generateContiguous(SpreadsheetVersion.EXCEL2007,name);
     				for (int j = 0; j < refs.length; j++) {
     					sheetName = refs[j].getFirstCell().getSheetName();
     					addNamedRange(namedRanges, sheetName, name);    					
     				}
     			}
-        	}
+            }
         }
         catch (Exception e) {
         	LOG.error(e.getMessage(), e);

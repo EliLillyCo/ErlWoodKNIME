@@ -61,6 +61,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.AreaReference;
 import org.apache.poi.ss.util.CellReference;
+import org.apache.poi.ss.SpreadsheetVersion;
 import org.knime.core.data.DataTable;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.RowIterator;
@@ -102,7 +103,7 @@ class XLSTable implements DataTable {
         if (settings.getReadNamedRange()) {
         		String input = settings.getNamedRange();
         		Name aNamedCell = m_workbook.getName(input);
-                AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula());
+                AreaReference aref = new AreaReference(aNamedCell.getRefersToFormula(),SpreadsheetVersion.EXCEL2007);
                 CellReference[] crefs = aref.getAllReferencedCells();
         		firstRowNamedRange = crefs[0].getRow();
         		lastRowNamedRange = crefs[crefs.length - 1].getRow();
@@ -214,23 +215,22 @@ class XLSTable implements DataTable {
     	String wbsheet;
         ArrayList<String> names = new ArrayList<String>();
         
-        for (int sIdx = 0; sIdx < wb.getNumberOfNames(); sIdx++) {
-        	Name namedRange = wb.getNameAt(sIdx);
+        for(Name namedRange : wb.getAllNames()) {
         	String name = namedRange.getNameName();
         	if (name.contains("Print_Area") || name.contains("PrintArea")) {
     			continue;
     		}
         	//	Is this a cell reference name ?
         	try {
-        		wbsheet = wb.getNameAt(sIdx).getSheetName();
-        		AreaReference.generateContiguous(namedRange.getRefersToFormula());
+        		wbsheet = namedRange.getSheetName();
+        		AreaReference.generateContiguous(SpreadsheetVersion.EXCEL2007,namedRange.getRefersToFormula());
         	} catch(IllegalArgumentException iax) {
         		continue;
         	} catch(IllegalStateException isx) {
 	    		continue;
 	    	}
         	if (wbsheet.equals(sheet)) {
-        		names.add((wb.getNameAt(sIdx)).getNameName());
+        		names.add(namedRange.getNameName());
         	}
         
         }
@@ -266,13 +266,15 @@ class XLSTable implements DataTable {
     
     public static String getFirstNamedRange(final Workbook wBook) {
         String result = null;
-        for (int sIdx = 0; sIdx < wBook.getNumberOfNames(); sIdx++) {
-            String NamedRange = wBook.getNameAt(sIdx).getNameName();
+        int sIdx = 0;
+        for(Name namedRange : wBook.getAllNames()) {
+            String name = namedRange.getNameName();
             if (sIdx == 0) {
                 // return the first sheet, in case there is no data in the book
-                result = NamedRange;
+                result = name;
             }
-            result = wBook.getNameAt(0).getNameName();
+            result = namedRange.getNameName();
+            sIdx++;
         }
         return result;
 

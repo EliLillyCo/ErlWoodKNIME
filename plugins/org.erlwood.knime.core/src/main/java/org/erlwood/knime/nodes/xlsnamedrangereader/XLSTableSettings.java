@@ -62,6 +62,7 @@ import java.util.Set;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -501,14 +502,14 @@ public class XLSTableSettings {
                     if (cell != null) {
                         // determine the type
                         switch (cell.getCellType()) {
-                        case Cell.CELL_TYPE_BLANK:
+                        case BLANK:
                             // missing cell - doesn't change any type
                             break;
-                        case Cell.CELL_TYPE_BOOLEAN:
+                        case BOOLEAN:
                             // KNIME has no boolean - use String
                             colTypes.set(knimeColIdx, StringCell.TYPE);
                             break;
-                        case Cell.CELL_TYPE_ERROR:
+                        case ERROR:
                             if (settings.getUseErrorPattern()) {
                                 // error patterns are of type string
                                 colTypes.set(knimeColIdx, StringCell.TYPE);
@@ -521,7 +522,7 @@ public class XLSTableSettings {
                                 }
                             }
                             break;
-                        case Cell.CELL_TYPE_FORMULA:
+                        case FORMULA:
                             CellValue cellValue = null;
                             try {
                                 cellValue = evaluator.evaluate(cell);
@@ -541,10 +542,10 @@ public class XLSTableSettings {
                                 break;
                             }
                             switch (cellValue.getCellType()) {
-                            case Cell.CELL_TYPE_BOOLEAN:
+                            case BOOLEAN:
                                 colTypes.set(knimeColIdx, StringCell.TYPE);
                                 break;
-                            case Cell.CELL_TYPE_NUMERIC:
+                            case NUMERIC:
                                 // numeric could be double, int or date
                                 if (colTypes.get(knimeColIdx) == StringCell.TYPE) {
                                     // string takes all
@@ -578,13 +579,13 @@ public class XLSTableSettings {
                                     colTypes.set(knimeColIdx, DoubleCell.TYPE);
                                 }
                                 break;
-                            case Cell.CELL_TYPE_STRING:
+                            case STRING:
                                 colTypes.set(knimeColIdx, StringCell.TYPE);
                                 break;
-                            case Cell.CELL_TYPE_BLANK:
+                            case BLANK:
                                 // gets a missing cell - doesn't change type
                                 break;
-                            case Cell.CELL_TYPE_ERROR:
+                            case ERROR:
                                 if (settings.getUseErrorPattern()) {
                                     // error patterns are of type string
                                     colTypes.set(knimeColIdx, StringCell.TYPE);
@@ -598,12 +599,12 @@ public class XLSTableSettings {
                                     }
                                 }
                                 break;
-                            case Cell.CELL_TYPE_FORMULA:
+                            case FORMULA:
                                 // will never happen after evaluation
                                 break;
                             }
                             break;
-                        case Cell.CELL_TYPE_NUMERIC:
+                        case NUMERIC:
                             // numeric could be double, int or date
                             if (colTypes.get(knimeColIdx) == StringCell.TYPE) {
                                 // string takes all
@@ -635,7 +636,7 @@ public class XLSTableSettings {
                                 colTypes.set(knimeColIdx, DoubleCell.TYPE);
                             }
                             break;
-                        case Cell.CELL_TYPE_STRING:
+                        case STRING:
                             colTypes.set(knimeColIdx, StringCell.TYPE);
                             break;
                         default:

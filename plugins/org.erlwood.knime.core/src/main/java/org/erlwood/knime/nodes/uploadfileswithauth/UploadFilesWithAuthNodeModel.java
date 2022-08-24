@@ -100,7 +100,7 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
     	
         // get the credentials to use to access the share
     	credentials = AuthenticationUtils.getAuthenticationContext(
-        		this.getAvailableFlowVariables(), 
+        		this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), 
         		getCredentialsProvider( ),
         		nodeSettings.getCredentialsName( )
         );
@@ -159,7 +159,7 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
                 thread.nextRow();
 
                 // upload
-                String path = getAvailableFlowVariables().get(nodeSettings.getPathVariable( )).getStringValue();
+                String path = getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE).get(nodeSettings.getPathVariable( )).getStringValue();
                 String uploadedFile = upload(path, outDir);
                 addRow(container, null, uploadedFile);
             }
@@ -184,7 +184,7 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
         // validate
         String share = nodeSettings.getSharePath( );
         String column = nodeSettings.getPathColumn( );
-        FlowVariable variable = getAvailableFlowVariables().get(nodeSettings.getPathVariable( ));
+        FlowVariable variable = getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE).get(nodeSettings.getPathVariable( ));
         validate(share, column, variable);
 
         // set warning for overwrite
@@ -266,7 +266,7 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
     private void validate(final String share, final String column, final FlowVariable variable) throws InvalidSettingsException {
         // get the credentials to use to access the share
     	credentials = AuthenticationUtils.getAuthenticationContext(
-        		this.getAvailableFlowVariables(), 
+        		this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), 
         		getCredentialsProvider( ),
         		nodeSettings.getCredentialsName( )
         );
@@ -520,7 +520,7 @@ class UploadFilesWithAuthNodeModel extends NodeModel {
             AppendedColumnRow outRow = new AppendedColumnRow(row, cells);
             container.addRowToTable(outRow);
         } else {
-            DefaultRow outRow = new DefaultRow(getAvailableFlowVariables().get(nodeSettings.getPathVariable( )).getName(), cells);
+            DefaultRow outRow = new DefaultRow(getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE).get(nodeSettings.getPathVariable( )).getName(), cells);
             container.addRowToTable(outRow);
         }
     }

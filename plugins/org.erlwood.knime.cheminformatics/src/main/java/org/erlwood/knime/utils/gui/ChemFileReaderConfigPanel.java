@@ -495,10 +495,10 @@ public class ChemFileReaderConfigPanel extends JPanel implements
 						SortedFilteredListModel rMdl = mPropLists.getRightListModel();
 						
 						lMdl.clear();
-						lMdl.addAll(newProperties);
+						lMdl.addAllItems(newProperties);
 						
 						rMdl.clear();
-						rMdl.addAll(newSelectedProps);
+						rMdl.addAllItems(newSelectedProps);
 						propPanelLayout.show(propPanel, PROP_PANEL);						
 						requiresScanning = false;
 					}					
@@ -864,7 +864,7 @@ public class ChemFileReaderConfigPanel extends JPanel implements
 			newProperties.add(new PropertyObject(key, ""));
 		}
 		mPropLists.getLeftListModel().clear();
-		mPropLists.getLeftListModel().addAll(newProperties);		
+		mPropLists.getLeftListModel().addAllItems(newProperties);		
 	}
 
 	public void setAllProperties(String[] foundProps, String[] selectedProps) {
@@ -879,10 +879,10 @@ public class ChemFileReaderConfigPanel extends JPanel implements
 			newSelectedProperties.add(new PropertyObject(key, ""));
 		}
 		mPropLists.getLeftListModel().clear();
-		mPropLists.getLeftListModel().addAll(newProperties);
+		mPropLists.getLeftListModel().addAllItems(newProperties);
 		
 		mPropLists.getRightListModel().clear();
-		mPropLists.getRightListModel().addAll(newSelectedProperties);
+		mPropLists.getRightListModel().addAllItems(newSelectedProperties);
 		
 		
 	}

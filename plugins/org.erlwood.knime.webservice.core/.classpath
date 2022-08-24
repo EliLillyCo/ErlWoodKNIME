@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/commons-codec.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/commons-logging.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/FastInfoset.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/gmbal-api-only.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/ha-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/httpclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/httpcore.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/httpmime.jar"/>
-	<classpathentry exported="true" kind="lib" path="target/lib/httpclient-win.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.annotation-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jaxb-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jaxb-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jaxws-rt.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/jna.jar"/>
 	<classpathentry exported="true" kind="lib" path="target/lib/jna-platform.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/management-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/mimepull.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/saaj-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/stax2-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/stax-ex.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/streambuffer.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/woodstox-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.jws-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.xml.bind-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.xml.ws-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/jakarta.xml.soap-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="target/lib/httpclient-win.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

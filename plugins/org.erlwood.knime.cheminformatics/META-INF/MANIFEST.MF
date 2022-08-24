@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Cheminformatics
 Bundle-SymbolicName: org.erlwood.knime.cheminformatics;singleton:=true
-Bundle-Version: 4.0.2.qualifier
+Bundle-Version: 4.5.1.qualifier
 Bundle-Vendor: Erlwood
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.knime.base;bundle-version="[4.0.0,5.0.0)",
  org.knime.chem.types;bundle-version="[4.0.0,5.0.0)",
  org.apache.commons.lang;bundle-version="[2.6.0,3.0.0)",
@@ -16,9 +16,9 @@ Require-Bundle: org.knime.base;bundle-version="[4.0.0,5.0.0)",
  org.rdkit.knime.nodes;bundle-version="[2.4.0,5.0.0)",
  org.rdkit.knime.types;bundle-version="[2.4.0,5.0.0)",
  org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
- org.erlwood.knime.core;bundle-version="3.3.1",
+ org.erlwood.knime.core;bundle-version="[4.0.0,5.0.0)",
  org.knime.json;bundle-version="[4.0.0,5.0.0)",
- org.erlwood.knime.webservice.core;bundle-version="3.3.1"
+ org.erlwood.knime.webservice.core;bundle-version="[4.4.0,5.0.0)"
 Export-Package: org.erlwood.knime,
  org.erlwood.knime.datatypes.converters,
  org.erlwood.knime.nodes.annotatemolecules,
@@ -86,3 +86,4 @@ Bundle-ClassPath: erlwood-cheminformatics.jar,
 Bundle-Activator: org.erlwood.knime.CheminformaticsActivator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.internal.browser
+Automatic-Module-Name: org.erlwood.knime.cheminformatics

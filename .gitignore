@@ -4,3 +4,4 @@
 .project
 workspace
 /**/*.jar
+/**/.DS_Store

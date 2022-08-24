@@ -131,7 +131,7 @@ public class DownloadFilesWithAuthNodeModel extends NodeModel {
 		}
 
 		// get the credentials to use to access the files
-		credentials = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(),
+		credentials = AuthenticationUtils.getAuthenticationContext(this.getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE),
 				getCredentialsProvider(), nodeSettings.getCredentialsName());
 
 		// find the index for the URL column

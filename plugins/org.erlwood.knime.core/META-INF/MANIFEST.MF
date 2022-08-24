@@ -2,30 +2,21 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Core
 Bundle-SymbolicName: org.erlwood.knime.core;singleton:=true
-Bundle-Version: 4.0.2.qualifier
+Bundle-Version: 4.5.1.qualifier
 Bundle-Vendor: Erlwood
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.apache.commons.logging;bundle-version="1.1.1",
- org.knime.base;bundle-version="[4.0.0,5.0.0)",
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.knime.base;bundle-version="[4.0.0,5.0.0)",
  org.apache.commons.lang;bundle-version="[2.6.0,3.0.0)",
  org.apache.commons.codec;bundle-version="[1.3.0,2.0.0)",
- org.knime.distmatrix;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.ui.browser;bundle-version="[3.6.0,4.0.0)",
- org.apache.poi;bundle-version="[3.6.0,4.0.0)",
- org.apache.poi.ooxml;bundle-version="3.9.0",
- org.apache.poi.ooxml.schemas;bundle-version="3.9.0",
  javax.ws.rs-api;bundle-version="[2.0.1,3.0.0)",
  org.knime.rest;bundle-version="[4.0.0,5.0.0)",
  org.apache.commons.lang3;bundle-version="[3.2.1,4.0.0)",
- org.apache.httpcomponents.httpasyncclient;bundle-version="4.0.2",
  org.apache.httpcomponents.httpclient;bundle-version="[4.3.6,5.0.0)",
  org.apache.cxf.cxf-core;bundle-version="3.0.7";visibility:=reexport,
  org.apache.cxf.cxf-rt-transports-http-hc;bundle-version="3.0.7";visibility:=reexport,
- org.apache.cxf.cxf-rt-rs-client;bundle-version="3.0.7";visibility:=reexport,
- org.knime.core;bundle-version="[4.0.0,5.0.0)",
- org.apache.aries.blueprint;bundle-version="1.1.0",
- org.knime.workbench.ui;bundle-version="[4.0.0,5.0.0)"
+ org.apache.cxf.cxf-rt-rs-client;bundle-version="3.0.7";visibility:=reexport
 Export-Package: jcifs,
  jcifs.dcerpc,
  jcifs.dcerpc.msrpc,
@@ -64,22 +55,37 @@ Export-Package: jcifs,
  org.erlwood.knime.utils.node,
  org.erlwood.knime.views
 Bundle-ClassPath: erlwood-core.jar,
+ target/lib/bcprov-jdk15on.jar,
+ target/lib/commons-codec.jar,
+ target/lib/commons-collections4.jar,
+ target/lib/commons-compress.jar,
+ target/lib/commons-io.jar,
+ target/lib/commons-math3.jar,
+ target/lib/curvesapi.jar,
  target/lib/jcifs.jar,
- target/lib/smbjwrapper.jar,
- target/lib/smbj.jar,
- target/lib/slf4j-api.jar,
+ target/lib/log4j-api.jar,
  target/lib/mbassador.jar,
- target/lib/bcprov-jdk15on.jar
+ target/lib/poi.jar,
+ target/lib/poi-ooxml.jar,
+ target/lib/poi-ooxml-lite.jar,
+ target/lib/servlet-api.jar,
+ target/lib/slf4j-api.jar,
+ target/lib/smbj.jar,
+ target/lib/smbjwrapper.jar,
+ target/lib/SparseBitSet.jar,
+ target/lib/xmlbeans.jar
 Bundle-Activator: org.erlwood.knime.CoreActivator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.cxf.transport.http;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.http.auth;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.http.blueprint;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.http.osgi;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.http.policy;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.http.spring;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.https.httpclient;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.servlet;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.servlet.blueprint;version="[3.0.7,4.0.0)",
- org.apache.cxf.transport.servlet.servicelist;version="[3.0.7,4.0.0)",
- org.apache.cxf.transports.http.configuration;version="[3.0.7,4.0.0)"
+ org.apache.cxf.transports.http.configuration;version="[3.0.7,4.0.0)",
+ org.apache.poi.ss.util,
+ org.apache.poi.ss.usermodel,
+ org.apache.poi.ss.extractor,
+ org.apache.poi.ss.format,
+ org.apache.poi.ss.formula,
+ org.apache.poi.poifs.filesystem,
+ org.apache.poi.xssf.usermodel,
+ org.apache.poi.xssf.model,
+ org.apache.poi.hssf.usermodel,
+ org.apache.poi.hssf.model
+Automatic-Module-Name: org.erlwood.knime.core

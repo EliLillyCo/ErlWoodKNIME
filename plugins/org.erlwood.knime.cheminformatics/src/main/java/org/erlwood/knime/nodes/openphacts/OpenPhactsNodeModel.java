@@ -171,7 +171,7 @@ public class OpenPhactsNodeModel extends AbstractWebServiceNodeModel {
 	    
 	    IExec methodExec = openPhactsSettings.getMethod().getExec();
 	    
-	    methodExec.setup(getAvailableFlowVariables(), getCredentialsProvider(), wsSettings, input, openPhactsSettings);
+	    methodExec.setup(getAvailableFlowVariables(org.knime.core.node.workflow.VariableType.StringType.INSTANCE, org.knime.core.node.workflow.VariableType.DoubleType.INSTANCE, org.knime.core.node.workflow.VariableType.IntType.INSTANCE), getCredentialsProvider(), wsSettings, input, openPhactsSettings);
 	    output = methodExec.executeCall(input, exec);	  
 	    if (methodExec.getWarningMessage() != null) {
 	    	setWarningMessage(methodExec.getWarningMessage());

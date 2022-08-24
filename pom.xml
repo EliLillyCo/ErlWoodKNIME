@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.erlwood.knime</groupId>
 	<artifactId>erlwood-knime</artifactId>
-	<version>4.0.2-SNAPSHOT</version>
+	<version>4.5.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -15,6 +15,7 @@
 		
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<lib.directory>${project.basedir}/target/lib</lib.directory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<modules>
@@ -31,8 +32,8 @@
 		<module>features/org.erlwood.features.cheminformatics.base</module>
 
 		<!-- test plugin modules -->
-		<module>tests/org.erlwood.knime.core.test</module>
-		<module>tests/org.erlwood.knime.webservice.core.test</module>
+		<!-- <module>tests/org.erlwood.knime.core.test</module>
+		<module>tests/org.erlwood.knime.webservice.core.test</module> -->
 	</modules>
 	
 	<profiles>
@@ -74,7 +75,7 @@
 				<extensions>true</extensions>
 			</plugin>
 			
-			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.0.2-SNAPSHOT" -->
+			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.5.1-SNAPSHOT" -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
@@ -177,68 +178,44 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-dependency-plugin
-										</artifactId>
-										<versionRange>
-											[3.1.1,)
-										</versionRange>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[3.1.1,)</versionRange>
 										<goals>
-											<goal>
-												copy-dependencies
-											</goal>
+											<goal>copy-dependencies</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											tycho-compiler-plugin
-										</artifactId>
-										<versionRange>
-											[1.4.0,)
-										</versionRange>
+										<groupId>org.eclipse.tycho</groupId>
+										<artifactId>tycho-compiler-plugin</artifactId>
+										<versionRange>[${tycho.version},)</versionRange>
 										<goals>
 											<goal>compile</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.eclipse.tycho
-										</groupId>
-										<artifactId>
-											tycho-packaging-plugin
-										</artifactId>
-										<versionRange>
-											[1.4.0,)
-										</versionRange>
+										<groupId>org.eclipse.tycho</groupId>
+										<artifactId>tycho-packaging-plugin</artifactId>
+										<versionRange>[${tycho.version},)</versionRange>
 										<goals>
 											<goal>build-qualifier</goal>
-											<goal>
-												build-qualifier-aggregator
-											</goal>
+											<goal>build-qualifier-aggregator</goal>
 											<goal>validate-id</goal>
-											<goal>
-												validate-version
-											</goal>
+											<goal>validate-version</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
