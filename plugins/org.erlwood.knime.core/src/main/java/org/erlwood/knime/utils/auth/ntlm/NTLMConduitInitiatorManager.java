@@ -20,7 +20,7 @@
 */
 package org.erlwood.knime.utils.auth.ntlm;
 
-import javax.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.Invocation.Builder;
 
 import org.apache.cxf.BusException;
 import org.apache.cxf.jaxrs.client.WebClient;

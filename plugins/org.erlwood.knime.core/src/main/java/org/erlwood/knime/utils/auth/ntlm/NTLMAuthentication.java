@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.Invocation.Builder;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.Bus;
@@ -50,10 +50,8 @@ import org.knime.core.node.workflow.CredentialsProvider;
 import org.knime.core.node.workflow.FlowVariable;
 import org.knime.core.node.workflow.ICredentials;
 import org.knime.rest.generic.UsernamePasswordAuthentication;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.PasswordAuthentication;
+
+
 /**
  * NTLM Authentication.
  *

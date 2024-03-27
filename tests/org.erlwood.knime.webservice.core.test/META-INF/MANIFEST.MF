@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Testing
 Bundle-SymbolicName: org.erlwood.knime.webservice.core.test;singleton:=true
-Bundle-Version: 4.5.1.qualifier
+Bundle-Version: 5.2.2.qualifier
 Fragment-Host: org.erlwood.knime.webservice.core;bundle-version="3.7.2"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: org.junit;bundle-version="4.12.0",
- org.mockito.mockito-core;bundle-version="1.10.19",
- org.knime.testing;bundle-version="3.3.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: org.junit;bundle-version="4.13.2",
+ org.mockito.mockito-core;bundle-version="2.28.2",
+ org.knime.testing;bundle-version="5.2.0"

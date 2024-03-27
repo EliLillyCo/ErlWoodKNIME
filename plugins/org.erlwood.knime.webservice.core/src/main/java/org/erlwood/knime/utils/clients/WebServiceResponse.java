@@ -24,8 +24,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.json.Json;
-import javax.json.stream.JsonParser;
+import jakarta.json.Json;
+import jakarta.json.stream.JsonParser;
 
 import org.knime.core.data.DataType;
 import org.knime.core.data.def.BooleanCell;

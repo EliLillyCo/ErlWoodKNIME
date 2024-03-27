@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.erlwood.knime</groupId>
 	<artifactId>erlwood-knime</artifactId>
-	<version>4.5.1-SNAPSHOT</version>
+	<version>5.2.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<maven.deploy.version>3.0.0-M1</maven.deploy.version>
-		<maven.dependency.version>3.1.1</maven.dependency.version>
-		<tycho.version>1.6.0</tycho.version>
+		<maven.deploy.version>3.1.1</maven.deploy.version>
+		<maven.dependency.version>3.6.1</maven.dependency.version>
+		<tycho.version>4.0.6</tycho.version>
 		
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<lib.directory>${project.basedir}/target/lib</lib.directory>

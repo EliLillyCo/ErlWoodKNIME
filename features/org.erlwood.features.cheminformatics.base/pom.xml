@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.erlwood.knime</groupId>
 		<artifactId>erlwood-knime</artifactId>
-		<version>4.5.1-SNAPSHOT</version>
+		<version>5.2.2-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>org.erlwood.features.cheminformatics.base</artifactId>
