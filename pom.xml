@@ -75,7 +75,7 @@
 				<extensions>true</extensions>
 			</plugin>
 			
-			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=4.5.1-SNAPSHOT" -->
+			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=5.2.2-SNAPSHOT" -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
@@ -127,7 +127,7 @@
 						</environment>
 
 						<environment>
-							<os>macos</os>
+							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
