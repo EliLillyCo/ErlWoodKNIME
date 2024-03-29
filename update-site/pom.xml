@@ -14,4 +14,19 @@
 	<properties>
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
+
+	<!-- Required only if being built in stand-alone fashion, if built by including it as a dependency to some other update site/eclipse repo
+		 then the assemly happened automatically -->
+	<!-- <build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<goals>
+              		<goal>archive-repository</goal>
+            	</goals>
+			</plugin>
+		</plugins>
+	</build> -->
 </project>
