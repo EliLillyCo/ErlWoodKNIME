@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Core
 Bundle-SymbolicName: org.erlwood.knime.core;singleton:=true
-Bundle-Version: 5.2.2.qualifier
+Bundle-Version: 5.2.3.qualifier
 Bundle-Vendor: Erlwood
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.knime.base;bundle-version="[5.0.0,6.0.0)",

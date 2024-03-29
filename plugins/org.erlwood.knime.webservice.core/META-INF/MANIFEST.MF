@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Erlwood Knime Open Source Web Services Core
 Bundle-SymbolicName: org.erlwood.knime.webservice.core;singleton:=true
-Bundle-Version: 5.2.2.qualifier
+Bundle-Version: 5.2.3.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: Erlwood
 Bundle-ClassPath: erlwood-wscore.jar,
@@ -37,7 +37,7 @@ Bundle-ClassPath: erlwood-wscore.jar,
 Bundle-Activator: org.erlwood.knime.WebServiceCoreActivator
 Bundle-ActivationPolicy: lazy
 Eclipse-ExtensibleAPI: true
-Require-Bundle: org.erlwood.knime.core;bundle-version="[4.0.0,5.2.3)",
+Require-Bundle: org.erlwood.knime.core;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.core.net,
  org.eclipse.ui,
  org.knime.base;bundle-version="[5.0.0,6.0.0)",
