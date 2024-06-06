@@ -155,6 +155,9 @@ public abstract class RESTWebServiceClient extends WebServiceClient {
 	
 	/** Data for the POST content. */
 	protected byte[] postContent;
+
+	/** Flag to be used for non-DWS APIs for the POST content. */
+	protected boolean useStringEntity;
 	
 	/** Whether to disable the code for creating/manipulating the URL. */
 	protected boolean createURL;
@@ -345,6 +348,25 @@ public abstract class RESTWebServiceClient extends WebServiceClient {
 				setContentType("application/octet-stream");
 			}
 		}
+		
+		// return result
+		return callWebService(exec, method, parameters);
+	}
+	
+	
+	/** Invoke the REST web service request using POST.
+	 * @param exec The ExecutionContext used to check for cancellation.
+	 * @param method The method on the web service to call.
+	 * @param data The data content to include in the POST request.
+	 * @param useStringEntity flag to notify the HTTP client to use JSON-type StringEntity.
+	 * @param parameters The parameters to append to the URL.
+	 * @return The response from the web service.
+	 * @throws Exception */
+	public final InputStream invokePost(final ExecutionContext exec, final String method, 
+			final byte[] data, boolean useStringEntity, final Object... parameters) throws Exception {	
+		
+		this.useStringEntity = useStringEntity;
+		postContent = data;
 		
 		// return result
 		return callWebService(exec, method, parameters);
