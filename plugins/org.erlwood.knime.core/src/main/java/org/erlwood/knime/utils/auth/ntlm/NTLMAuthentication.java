@@ -223,16 +223,7 @@ public class NTLMAuthentication extends UsernamePasswordAuthentication {
                 throw new IllegalStateException("Missing credentials for " + credentialsName);
             }
         }
-        
-        //	Check username & password
-        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-        	throw new IllegalStateException("Username or Password cannot be blank !");
-        }else {
-        	int i = username.indexOf("\\");
-        	if(i == -1) {
-        		username = "\\" + username;	// Set an empty domain
-        	}
-        }
+
         return new NTCredentials(username, password, HOST, "");
     }
 }
