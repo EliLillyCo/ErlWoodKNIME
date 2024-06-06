@@ -54,6 +54,8 @@ import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.auth.BasicSchemeFactory;
 import org.apache.http.impl.auth.DigestSchemeFactory;
 import org.apache.http.impl.auth.NTLMSchemeFactory;
@@ -98,6 +100,10 @@ public class ApacheRESTWebServiceClient extends RESTWebServiceClient {
 			BasicHttpEntity entity = new BasicHttpEntity( );
 			entity.setContent(new ByteArrayInputStream(postContent));
 			return new BufferedHttpEntity(entity);
+		}
+		
+		public HttpEntity createHttpStringEntity(final byte[] postContent) throws Exception {
+			return new StringEntity(new String(postContent), ContentType.APPLICATION_JSON);
 		}
 		
 	}
@@ -217,7 +223,14 @@ public class ApacheRESTWebServiceClient extends RESTWebServiceClient {
 				request = post;
 				
 				// add the content
-				post.setEntity(entityFactory.createHttpEntity(postContent));
+				if (useStringEntity) {
+					// new non-DWS APIs need this to work;
+					HttpEntity jsonBody = entityFactory.createHttpStringEntity(postContent);
+					post.setEntity(jsonBody);
+				} else {
+					post.setEntity(entityFactory.createHttpEntity(postContent));
+				}
+				
 			} else {
 				request = new HttpGet(queryString.toString( ));
 			}
