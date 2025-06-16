@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Test
 Bundle-SymbolicName: org.erlwood.knime.core.test
-Bundle-Version: 5.2.3.qualifier
+Bundle-Version: 5.4.4.qualifier
 Fragment-Host: org.erlwood.knime.core;bundle-version="[5.0.0,6.0.0)"
 Automatic-Module-Name: org.erlwood.knime.core.test
 Bundle-RequiredExecutionEnvironment: JavaSE-17
