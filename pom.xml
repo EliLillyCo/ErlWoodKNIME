@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.erlwood.knime</groupId>
 	<artifactId>erlwood-knime</artifactId>
-	<version>5.2.3-SNAPSHOT</version>
+	<version>5.4.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -49,6 +49,41 @@
 				<!-- update site modules -->
 				<module>update-site</module>
 			</modules>
+		</profile>
+		<profile>
+			<id>jarsigner</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<signer.keystore>${session.executionRootDirectory}/keystore/keystore.jks</signer.keystore>
+				<signer.alias>knime-code-signing</signer.alias>
+				<signer.storepass>changeit</signer.storepass>
+				<signer.keypass>changeit</signer.keypass>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+						<execution>
+							<id>sign</id>
+							<goals>
+							<goal>sign</goal>
+							</goals>
+						</execution>
+						</executions>
+						<configuration>
+							<keystore>${signer.keystore}</keystore>
+							<alias>${signer.alias}</alias>
+							<storepass>${signer.storepass}</storepass>
+							<keypass>${signer.keypass}</keypass>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 	
