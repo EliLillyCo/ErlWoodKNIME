@@ -1,25 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target includeMode="feature" name="Erlwood KNIME Target" sequenceNumber="1512743977">
+<target name="Lilly KNIME Target" sequenceNumber="1512743975">
     <locations>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+			
+			<unit id="com.knime.features.explorer.serverspace.feature.group" version="0.0.0"/>
 			<unit id="org.knime.features.base.feature.group" version="0.0.0"/>
-            <unit id="org.knime.features.json.feature.group" version="0.0.0"/>
-            <unit id="org.knime.features.rest.feature.group" version="0.0.0"/>
-            <unit id="org.knime.features.testing.application.feature.group" version="0.0.0"/>
-            <unit id="org.knime.features.distmatrix.feature.group" version="0.0.0"/>
-            <unit id="org.knime.features.ext.poi.feature.group" version="0.0.0"/>
-            <repository location="http://update.knime.com/analytics-platform/5.2"/>
+			<unit id="org.knime.features.browser.cef.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.clfixes.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.core.columnar.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.core.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.core.ui.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.database.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.dbdrivers.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ensembles.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ext.itemset.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ext.jep.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ext.poi.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.filehandling.core.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.javasnippet.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.json.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.js.quickforms.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.personalproductivity.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.stats.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.testing.application.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.timeseries.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ui.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.workbench.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.xml.feature.group" version="0.0.0"/>
+			<unit id="org.knime.targetPlatform.feature.group" version="0.0.0"/>
+			
+			<!-- <unit id="org.knime.features.ext.tableau.hyperapi.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ext.tableau.hyper.feature.group" version="0.0.0"/>
+			<unit id="org.knime.features.ext.tableau.feature.group" version="0.0.0"/> -->
+
+			<!-- <unit id="org.knime.targetPlatform.feature.group" version="0.0.0"/> -->
+			<!-- <unit id="org.knime.features.eclipse.feature.group" version="0.0.0"/>-->
+			
+	    	<repository location="file:/C:/Users/pranat.karode@lilly.com/eclipse-workspace/local_update_sites/54/KNIME"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <unit id="org.rdkit.knime.feature.feature.group" version="0.0.0"/>
-            <repository location="http://update.knime.com/community-contributions/trusted/5.2"/>
+	    <repository location="file:/C:/Users/pranat.karode@lilly.com/eclipse-workspace/local_update_sites/54/Community/Trusted"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <unit id="jp.co.infocom.cheminfo.marvin.feature.feature.group" version="0.0.0"/>
             <unit id="com.chemcomp.feature.group" version="0.0.0"/>
-            <repository location="http://update.knime.com/partner/5.2"/>
+            <unit id="jp.co.infocom.cheminfo.marvin.feature.feature.group" version="0.0.0"/>
+	    <repository location="file:/C:/Users/pranat.karode@lilly.com/eclipse-workspace/local_update_sites/54/Partner-Local"/>
         </location>
     </locations>
     <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+    <launcherArgs>
+	<vmArgs>-server
+		-Dsun.java2d.d3d=false
+		-Dosgi.classloader.lock=classname
+		-XX:+UnlockDiagnosticVMOptions
+		-ea
+		-Dorg.eclipse.swt.internal.gtk.cairoGraphics=false
+		-Dorg.eclipse.swt.internal.gtk.useCairo=false
+		-Dorg.eclipse.swt.browser.IEVersion=11001
+		-Dsun.awt.noerasebackground=true
+		-Dsun.net.client.defaultReadTimeout=0
+		-Dorg.eclipse.swt.internal.gtk.disablePrinting
+		--add-opens=java.base/java.lang=ALL-UNNAMED
+		--add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+		--add-opens=java.base/java.net=ALL-UNNAMED
+		--add-opens=java.base/java.nio=ALL-UNNAMED
+		--add-opens=java.base/java.nio.channels=ALL-UNNAMED
+		--add-opens=java.base/java.util=ALL-UNNAMED
+		--add-opens=java.base/java.util.regex=ALL-UNNAMED
+		--add-opens=java.base/sun.net.www.protocol.http=ALL-UNNAMED
+		--add-opens=java.base/sun.net.www.protocol.https=ALL-UNNAMED
+		--add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+		--add-opens=java.base/sun.nio=ALL-UNNAMED
+		--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED
+		--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED
+	  
+	 	--add-opens=java.base/sun.net.www.protocol.http=ALL-UNNAMED</vmArgs>
+    </launcherArgs>
 </target>
