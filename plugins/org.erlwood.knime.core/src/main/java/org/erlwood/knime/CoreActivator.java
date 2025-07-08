@@ -20,7 +20,6 @@
 */
 package org.erlwood.knime;
 
-import org.apache.cxf.transports.http.configuration.ProxyServerType;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -55,7 +54,6 @@ public class CoreActivator extends AbstractUIPlugin {
 	public CoreActivator() {
 		super();
 		plugin = this;
-		ProxyServerType.values();
 	}
 	
 	@Override

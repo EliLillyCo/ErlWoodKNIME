@@ -11,12 +11,8 @@ Require-Bundle: org.knime.base;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.ui.browser;bundle-version="[3.6.0,4.0.0)",
  jakarta.ws.rs-api;bundle-version="[3.0.0,3.5.0)",
- org.knime.rest;bundle-version="[5.0.0,6.0.0)",
  org.apache.commons.lang3;bundle-version="[3.9.0,4.0.0)",
- org.apache.httpcomponents.httpclient;bundle-version="[4.3.6,5.0.0)",
- org.apache.cxf.cxf-core;bundle-version="4.0.3",
- org.apache.cxf.cxf-rt-transports-http-hc;bundle-version="4.0.3",
- org.apache.cxf.cxf-rt-rs-client;bundle-version="4.0.3"
+ org.apache.httpcomponents.httpclient;bundle-version="[4.3.6,5.0.0)"
 Export-Package: jcifs,
  jcifs.dcerpc,
  jcifs.dcerpc.msrpc,
@@ -41,7 +37,6 @@ Export-Package: jcifs,
  org.erlwood.knime.nodes.xlswriter,
  org.erlwood.knime.utils,
  org.erlwood.knime.utils.auth,
- org.erlwood.knime.utils.auth.ntlm,
  org.erlwood.knime.utils.datacell,
  org.erlwood.knime.utils.debugging,
  org.erlwood.knime.utils.gui,
@@ -76,16 +71,4 @@ Bundle-ClassPath: erlwood-core.jar,
  target/lib/xmlbeans.jar
 Bundle-Activator: org.erlwood.knime.CoreActivator
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.cxf.transport.http;version="[4.0.0,4.5.0)",
- org.apache.cxf.transports.http.configuration;version="[4.0.0,4.5.0)",
- org.apache.poi.ss.util,
- org.apache.poi.ss.usermodel,
- org.apache.poi.ss.extractor,
- org.apache.poi.ss.format,
- org.apache.poi.ss.formula,
- org.apache.poi.poifs.filesystem,
- org.apache.poi.xssf.usermodel,
- org.apache.poi.xssf.model,
- org.apache.poi.hssf.usermodel,
- org.apache.poi.hssf.model
 Automatic-Module-Name: org.erlwood.knime.core
