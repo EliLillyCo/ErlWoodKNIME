@@ -109,7 +109,7 @@ public class GraphRendererNodeModel extends NodeModel {
 				exec));
 
 		setEdgeCutoff(edgecut.getDoubleValue());
-		setCliffCutoff(edgecut.getDoubleValue());
+		setCliffCutoff(cliffcut.getDoubleValue());
 		setSmilesColIndex(inData[0].getSpec().findColumnIndex(
 				smilescol.getStringValue()));
 		setNamesColIndex(inData[0].getSpec().findColumnIndex(
