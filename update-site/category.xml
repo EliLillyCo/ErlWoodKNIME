@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.erlwood.features.core.base_5.4.4.qualifier.jar" id="org.erlwood.features.core.base" version="5.4.4.qualifier">
+   <feature url="features/org.erlwood.features.core.base_5.5.0.qualifier.jar" id="org.erlwood.features.core.base" version="5.5.0.qualifier">
       <category name="erlwood"/>
    </feature>
-   <feature url="features/org.erlwood.features.cheminformatics.base_5.4.4.qualifier.jar" id="org.erlwood.features.cheminformatics.base" version="5.4.4.qualifier">
+   <feature url="features/org.erlwood.features.cheminformatics.base_5.5.0.qualifier.jar" id="org.erlwood.features.cheminformatics.base" version="5.5.0.qualifier">
       <category name="erlwood"/>
    </feature>
    <category-def name="erlwood" label="Erlwood Open Source"/>
