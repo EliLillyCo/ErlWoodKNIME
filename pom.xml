@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.erlwood.knime</groupId>
 	<artifactId>erlwood-knime</artifactId>
-	<version>5.2.3-SNAPSHOT</version>
+	<version>5.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<maven.deploy.version>3.1.1</maven.deploy.version>
-		<maven.dependency.version>3.6.1</maven.dependency.version>
-		<tycho.version>4.0.6</tycho.version>
+		<maven.deploy.version>3.1.4</maven.deploy.version>
+		<maven.dependency.version>3.8.1</maven.dependency.version>
+		<tycho.version>4.0.13</tycho.version>
 		
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<lib.directory>${project.basedir}/target/lib</lib.directory>
@@ -75,7 +75,7 @@
 				<extensions>true</extensions>
 			</plugin>
 			
-			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=5.2.3-SNAPSHOT" -->
+			<!-- Update version with "mvn tycho-versions:set-version -DnewVersion=5.5.0-SNAPSHOT" -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-versions-plugin</artifactId>
@@ -180,7 +180,7 @@
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
 										<artifactId>maven-dependency-plugin</artifactId>
-										<versionRange>[3.1.1,)</versionRange>
+										<versionRange>[${maven.dependency.version},)</versionRange>
 										<goals>
 											<goal>copy-dependencies</goal>
 										</goals>

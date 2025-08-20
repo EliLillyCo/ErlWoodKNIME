@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?eclipse version="3.0"?>
 <plugin>
-    <extension-point id="KnimeRestHeaderSupplier" name="Erlwood REST Header Supplier for KNIME" schema="schema/KnimeRestHeaderSupplier.exsd"/>
+    <!-- <extension-point id="KnimeRestHeaderSupplier" name="Erlwood REST Header Supplier for KNIME" schema="schema/KnimeRestHeaderSupplier.exsd"/> -->
    
 	<extension point="org.eclipse.ui.views">
       <category id="ErlwoodKnime" name="Erlwood Knime Client Extensions"/>
@@ -55,9 +55,9 @@
 		<startup class="org.erlwood.knime.StartupLauncher"/>
 	</extension>
 
-	<extension point="org.knime.rest.authentication">
+	<!-- <extension point="org.knime.rest.authentication">
       <AuthenticateEachRequest class="org.erlwood.knime.utils.auth.ntlm.NTLMAuthentication" deprecated="false" name="NTLM (Erlwood)">
       </AuthenticateEachRequest>
-   </extension>	
+   </extension> -->	
 
 </plugin>

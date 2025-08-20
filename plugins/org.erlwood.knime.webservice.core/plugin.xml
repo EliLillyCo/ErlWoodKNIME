@@ -6,6 +6,8 @@
     <extension-point id="ErlwoodWebServiceTabFactory" name="Erlwood WebService Tab Factory" schema="schema/ErlwoodWebServiceTabFactory.exsd"/>
     <extension-point id="ErlwoodWebServiceURLSupplier" name="Erlwood Web Service URL Supplier" schema="schema/ErlwoodWebServiceURLSupplier.exsd"/>
     <extension-point id="ErlwoodKerberosAuthSupplier" name="Erlwood Kerberos Authentication Supplier" schema="schema/ErlwoodKerberosAuthSupplier.exsd"/>
+    
+    <extension-point id="KnimeRestHeaderSupplier" name="Erlwood REST Header Supplier for KNIME" schema="schema/KnimeRestHeaderSupplier.exsd"/>
   
 	 <extension point="org.eclipse.core.runtime.preferences">
 	    <initializer class="org.erlwood.knime.WebServicePreferenceInitializer"/>
@@ -14,5 +16,10 @@
 	 <extension point="org.eclipse.ui.preferencePages">	    
         <page category="org.erlwood.knime.ErlwoodPreferencesUI" class="org.erlwood.knime.utils.gui.WebServiceSettingsPreferencePage" id="org.erlwood.knime.utils.gui.WebServiceSettingsPreferencePage" name="Web Service Settings" /> 		
 	 </extension>
+	 
+	 <extension point="org.knime.rest.authentication">
+	 	<AuthenticateEachRequest class="org.erlwood.knime.utils.auth.ntlm.NTLMAuthentication" deprecated="false" name="NTLM (Erlwood)">
+	 	</AuthenticateEachRequest>
+   	 </extension>
 
 </plugin>
