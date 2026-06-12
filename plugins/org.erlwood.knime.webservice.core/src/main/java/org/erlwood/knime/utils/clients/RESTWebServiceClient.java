@@ -20,10 +20,12 @@
 */
 package org.erlwood.knime.utils.clients;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,6 +52,11 @@ import org.knime.core.node.workflow.FlowVariable;
 
 import jcifs.smb.NtlmPasswordAuthentication;
 import jcifs.util.Base64;
+
+import jakarta.json.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /** Class used to ensure the interactions between REST clients and web services follow
  * a certain procedure giving a better consistency for the end user.
@@ -350,10 +357,109 @@ public abstract class RESTWebServiceClient extends WebServiceClient {
 		}
 		
 		// return result
-		return callWebService(exec, method, parameters);
+		InputStream result=callWebService(exec, method, parameters);
+		byte[] raw = result.readAllBytes();
+		String res=new String(raw, StandardCharsets.UTF_8);
+		InputStream wrappedStream = buildWrappedResponse(res);
+		return wrappedStream;
+
 	}
+
+
+	private InputStream buildWrappedResponse(String res) throws Exception {
+
+	    // ---- Parse input JSON ----
+	    JsonReader reader = Json.createReader(new StringReader(res));
+	    JsonObject root = reader.readObject();
+	    JsonArray rowsArray = root.getJsonArray("result");
+
+	    if (rowsArray == null || rowsArray.isEmpty()) {
+	        throw new IllegalArgumentException("result array missing or empty");
+	    }
+
+	    // ---- Extract column names from first row ----
+	    JsonObject firstRow = rowsArray.getJsonObject(0);
+	    List<String> columnNames = new ArrayList<>();
+
+	    // Ensure predictable order
+	    for (String key : firstRow.keySet()) {
+	        columnNames.add(key);
+	    }
+
+	    // ---- Infer column types ----
+	    List<String> columnTypes = new ArrayList<>();
+	    for (String col : columnNames) {
+	        JsonValue.ValueType vt = firstRow.get(col).getValueType();
+	        switch (vt) {
+	            case NUMBER: columnTypes.add("Double"); break;
+	            case STRING: columnTypes.add("String"); break;
+	            case TRUE:
+	            case FALSE: columnTypes.add("Boolean"); break;
+	            default: columnTypes.add("String");
+	        }
+	    }
+
+	    // ---- Build matrix rows ----
+	    JsonArrayBuilder rowsBuilder = Json.createArrayBuilder();
+
+	    for (JsonValue rowVal : rowsArray) {
+	        JsonObject rowObj = rowVal.asJsonObject();
+	        JsonArrayBuilder rowBuilder = Json.createArrayBuilder();
+
+	        for (String col : columnNames) {
+	            JsonValue cell = rowObj.get(col);
+
+	            if (cell == null || cell.getValueType() == JsonValue.ValueType.NULL) {
+	                rowBuilder.addNull();
+	            } else if (cell.getValueType() == JsonValue.ValueType.NUMBER) {
+	                rowBuilder.add(rowObj.getJsonNumber(col).doubleValue());
+	            } else if (cell.getValueType() == JsonValue.ValueType.STRING) {
+	                rowBuilder.add(rowObj.getString(col));
+	            } else {
+	                // Fallback to string
+	                rowBuilder.add(cell.toString());
+	            }
+	        }
+
+	        rowsBuilder.add(Json.createObjectBuilder()
+	                .add("data", rowBuilder));
+	    }
+
+	    // ---- Build nested returnValue ----
+	    JsonObject returnValue = Json.createObjectBuilder()
+	            .add("columnNames", toJsonArray(columnNames))
+	            .add("columnLabels", toJsonArray(columnNames))
+	            .add("columnDataTypes", toJsonArray(columnTypes))
+	            .add("rows", rowsBuilder)
+	            .add("truncated", false)
+	            .build();
+
+	    // ---- Build FINAL top-level object ----
+	    JsonObject finalResponse = Json.createObjectBuilder()
+	            .add("returnValue", returnValue)
+	            .add("isSuccess", true)
+	            .add("executionLog", "")
+	            .add("errorLog", "")
+	            .add("jobDirectory", "")
+	            .add("size", res.length())
+	            .add("cacheHit", false)
+	            .build();
+
+	    // Debug print
+	    System.out.println("\n===== FINAL JSON SENT TO KNIME =====\n" + finalResponse.toString() + "\n");
+
+	    return new ByteArrayInputStream(finalResponse.toString().getBytes(StandardCharsets.UTF_8));
+	}
+
+
+	private JsonArray toJsonArray(List<String> list) {
+	    JsonArrayBuilder builder = Json.createArrayBuilder();
+	    list.forEach(builder::add);
+	    return builder.build();
+	}
+
 	
-	
+
 	/** Invoke the REST web service request using POST.
 	 * @param exec The ExecutionContext used to check for cancellation.
 	 * @param method The method on the web service to call.
