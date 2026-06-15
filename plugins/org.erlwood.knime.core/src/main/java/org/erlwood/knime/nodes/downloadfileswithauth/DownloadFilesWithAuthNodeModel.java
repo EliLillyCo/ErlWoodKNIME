@@ -19,7 +19,8 @@
  * ------------------------------------------------------------------------
 */
 package org.erlwood.knime.nodes.downloadfileswithauth;
-
+import java.security.Security;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -72,6 +73,9 @@ import jcifs.smb.SmbFile;
  */
 public class DownloadFilesWithAuthNodeModel extends NodeModel {
 	
+	static {
+	    Security.addProvider(new BouncyCastleProvider());
+	}
 	/** The logger instance. */
 	private static final NodeLogger LOGGER = NodeLogger
 			.getLogger(DownloadFilesWithAuthNodeModel.class);

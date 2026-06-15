@@ -23,6 +23,12 @@
 			<artifactId>smbjwrapper</artifactId>
 			<version>0.0.8</version>
 		</dependency>
+		<dependency>
+			 <groupId>org.bouncycastle</groupId>
+			 <artifactId>bcprov-jdk18on</artifactId>
+			 <version>1.78.1</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
